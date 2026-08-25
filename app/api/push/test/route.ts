@@ -5,20 +5,18 @@ import { t } from '@/lib/i18n';
 
 export const dynamic = 'force-dynamic';
 
-const vapidPublic = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || '';
-const vapidPrivate = process.env.VAPID_PRIVATE_KEY || '';
-const vapidSubject = process.env.VAPID_SUBJECT || 'mailto:admin@balsabha.local';
-
-if (vapidPublic && vapidPrivate) {
-  try {
+function ensureVapid() {
+  const vapidPublic = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || '';
+  const vapidPrivate = process.env.VAPID_PRIVATE_KEY || '';
+  const vapidSubject = process.env.VAPID_SUBJECT || 'mailto:admin@balsabha.local';
+  if (vapidPublic && vapidPrivate) {
     webPush.setVapidDetails(vapidSubject, vapidPublic, vapidPrivate);
-  } catch (err) {
-    console.error('Failed to set VAPID details:', err);
   }
 }
 
 export async function POST(request: Request) {
   try {
+    ensureVapid();
     const supabase = await createClient();
     const {
       data: { user },

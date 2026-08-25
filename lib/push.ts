@@ -4,15 +4,16 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { TZ } from '@/lib/format';
 import { t } from '@/lib/i18n';
 
-const vapidPublic = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || '';
-const vapidPrivate = process.env.VAPID_PRIVATE_KEY || '';
-const vapidSubject = process.env.VAPID_SUBJECT || 'mailto:admin@balsabha.local';
+let vapidInitialised = false;
 
-if (vapidPublic && vapidPrivate) {
-  try {
+function ensureVapid() {
+  if (vapidInitialised) return;
+  const vapidPublic = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || '';
+  const vapidPrivate = process.env.VAPID_PRIVATE_KEY || '';
+  const vapidSubject = process.env.VAPID_SUBJECT || 'mailto:admin@balsabha.local';
+  if (vapidPublic && vapidPrivate) {
     webPush.setVapidDetails(vapidSubject, vapidPublic, vapidPrivate);
-  } catch (err) {
-    console.error('Failed to set VAPID details:', err);
+    vapidInitialised = true;
   }
 }
 
@@ -48,6 +49,7 @@ function isInsideReminderSlot(nowMinutes: number, slots: string[]): boolean {
  * Merge multiple open tasks for one karyakar into a single push.
  */
 export async function sendReminders(): Promise<{ sent: number; skipped: number }> {
+  ensureVapid();
   const now = new Date();
   const nowTimeStr = formatInTimeZone(now, TZ, 'HH:mm'); // e.g. "09:05"
   const [currH, currM] = nowTimeStr.split(':').map(Number);
