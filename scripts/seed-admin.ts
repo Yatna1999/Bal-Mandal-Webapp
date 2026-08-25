@@ -33,7 +33,7 @@ async function seedAdmin() {
 
   const username = 'admin';
   const email = usernameToEmail(username);
-  const password = 'Password123!';
+  const password = 'admin123';
 
   const { data: userList } = await adminClient.auth.admin.listUsers();
   let user = userList?.users?.find((u) => u.email === email);
