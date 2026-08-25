@@ -11,7 +11,6 @@ import { AppHeader } from '@/components/ui/AppHeader';
 import { useToast } from '@/components/ui/Toast';
 import { createClient } from '@/lib/supabase/client';
 import { cleanMobile } from '@/lib/format';
-import { seedAttendanceForBalak } from '@/lib/sessions';
 import { uploadBalakPhoto } from '@/lib/photo';
 import { t } from '@/lib/i18n';
 import type { MediumT, SatsangStatusT, Database } from '@/lib/database.types';
@@ -247,9 +246,28 @@ export function BalakForm({
         throw new Error(bsErr.message);
       }
 
-      // Step 3: Seed attendance records for upcoming sessions
-      // TODO: WO-23 - Seed attendance for newly registered balak
-      await seedAttendanceForBalak(balakId!);
+      // Step 3: Seed attendance records for upcoming scheduled sessions
+      if (balakId && selectedSabhaIds.length > 0) {
+        const { data: upcomingSessions } = await supabase
+          .from('sabha_sessions')
+          .select('id')
+          .in('sabha_id', selectedSabhaIds)
+          .eq('status', 'scheduled');
+
+        if (upcomingSessions && upcomingSessions.length > 0) {
+          const attRows = upcomingSessions.map((s) => ({
+            session_id: s.id,
+            balak_id: balakId,
+            presabha_status: 'pending' as const,
+            presabha_contacted: 'none' as const,
+            attendance_status: null,
+          }));
+          await supabase.from('attendance').upsert(attRows, {
+            onConflict: 'session_id,balak_id',
+            ignoreDuplicates: true,
+          });
+        }
+      }
 
       showToast(t('balak.saved'));
       router.push(`/balako/${balakId}`);

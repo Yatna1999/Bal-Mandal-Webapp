@@ -76,7 +76,13 @@ export function NotificationsClient({
       await navigator.serviceWorker.ready;
 
       // 3. Subscribe to Push Manager
-      const vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+      let vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+      if (!vapidPublicKey) {
+        const keyRes = await fetch('/api/push/subscribe');
+        const keyData = await keyRes.json();
+        vapidPublicKey = keyData.vapidPublicKey;
+      }
+
       if (!vapidPublicKey) {
         showToast(t('errors.network'));
         setLoading(false);

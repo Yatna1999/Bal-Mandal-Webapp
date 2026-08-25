@@ -1,7 +1,15 @@
+import { createClient as createBrowserClient } from '@/lib/supabase/client';
 import { adminClient } from '@/lib/supabase/admin';
 import { formatDateGu, formatDateEn, toGu } from '@/lib/format';
 import { t } from '@/lib/i18n';
 import type { Lang, Report, Col } from './types';
+
+function getDbClient() {
+  if (typeof window !== 'undefined') {
+    return createBrowserClient();
+  }
+  return adminClient;
+}
 
 function formatNum(val: number, lang: Lang): string {
   return lang === 'gu' ? toGu(val) : String(val);
@@ -38,7 +46,7 @@ export async function buildBalakRegister({
   let vistarName = 'બધા વિસ્તાર';
 
   if (sabhaId) {
-    const { data: sabhaRow } = await adminClient
+    const { data: sabhaRow } = await getDbClient()
       .from('sabhas')
       .select('name_gu, vistar_id, vistars(name_gu)')
       .eq('id', sabhaId)
@@ -50,7 +58,7 @@ export async function buildBalakRegister({
     }
   }
 
-  const { data: rawBalako } = await adminClient
+  const { data: rawBalako } = await getDbClient()
     .from('balako')
     .select(`
       id,
@@ -139,7 +147,7 @@ export async function buildAttendanceSheet({
   actorName?: string;
   lang?: Lang;
 }): Promise<Report> {
-  const { data: sabhaRow } = await adminClient
+  const { data: sabhaRow } = await getDbClient()
     .from('sabhas')
     .select('name_gu, vistar_id, vistars(name_gu)')
     .eq('id', sabhaId)
@@ -150,7 +158,7 @@ export async function buildAttendanceSheet({
   const vistarName = rawV?.name_gu || 'વિસ્તાર';
 
   // 1. Fetch held/scheduled sessions (EXCLUDING CANCELLED)
-  const { data: sessions } = await adminClient
+  const { data: sessions } = await getDbClient()
     .from('sabha_sessions')
     .select('id, session_date, status')
     .eq('sabha_id', sabhaId)
@@ -162,7 +170,7 @@ export async function buildAttendanceSheet({
   const validSessions = sessions || [];
 
   // 2. Fetch balako enrolled in this sabha
-  const { data: enrolledBalako } = await adminClient
+  const { data: enrolledBalako } = await getDbClient()
     .from('balak_sabhas')
     .select(`
       balako!inner(
@@ -187,7 +195,7 @@ export async function buildAttendanceSheet({
   const sessionIds = validSessions.map((s) => s.id);
   let attendanceRows: Array<{ session_id: string; balak_id: string; attendance_status: string | null }> = [];
   if (sessionIds.length > 0) {
-    const { data: att } = await adminClient
+    const { data: att } = await getDbClient()
       .from('attendance')
       .select('session_id, balak_id, attendance_status')
       .in('session_id', sessionIds);
@@ -342,7 +350,7 @@ export async function buildAhnikBySabha({
   actorName?: string;
   lang?: Lang;
 }): Promise<Report> {
-  const { data: sabhaRow } = await adminClient
+  const { data: sabhaRow } = await getDbClient()
     .from('sabhas')
     .select('name_gu, vistar_id, vistars(name_gu)')
     .eq('id', sabhaId)
@@ -353,7 +361,7 @@ export async function buildAhnikBySabha({
   const vistarName = rawV?.name_gu || 'વિસ્તાર';
 
   // 1. Fetch ahnik items sorted by sort_order
-  const { data: items } = await adminClient
+  const { data: items } = await getDbClient()
     .from('ahnik_items')
     .select('id, label_gu, label_en, sort_order')
     .order('sort_order', { ascending: true });
@@ -361,7 +369,7 @@ export async function buildAhnikBySabha({
   const ahnikItems = items || [];
 
   // 2. Fetch enrolled active balako
-  const { data: enrolledBalako } = await adminClient
+  const { data: enrolledBalako } = await getDbClient()
     .from('balak_sabhas')
     .select(`
       balako!inner(
@@ -385,7 +393,7 @@ export async function buildAhnikBySabha({
   // 3. Fetch ahnik_weeks and ahnik_entries for this weekStart
   let weekRecords: Array<{ id: string; balak_id: string; captured_by: string | null; karyakars: { full_name_gu: string } | null }> = [];
   if (balakIds.length > 0) {
-    const { data: wRecs } = await adminClient
+    const { data: wRecs } = await getDbClient()
       .from('ahnik_weeks')
       .select('id, balak_id, captured_by, karyakars!captured_by(full_name_gu)')
       .in('balak_id', balakIds)
@@ -402,7 +410,7 @@ export async function buildAhnikBySabha({
 
   let entryRows: Array<{ ahnik_week_id: string; ahnik_item_id: string; done: boolean }> = [];
   if (weekIds.length > 0) {
-    const { data: entries } = await adminClient
+    const { data: entries } = await getDbClient()
       .from('ahnik_entries')
       .select('ahnik_week_id, ahnik_item_id, done')
       .in('ahnik_week_id', weekIds);
@@ -498,7 +506,7 @@ export async function buildAhnikByBalak({
   actorName?: string;
   lang?: Lang;
 }): Promise<Report> {
-  const { data: balak } = await adminClient
+  const { data: balak } = await getDbClient()
     .from('balako')
     .select('full_name_gu, full_name_en, balak_sabhas(sabhas(name_gu, vistar_id, vistars(name_gu)))')
     .eq('id', balakId)
@@ -509,14 +517,14 @@ export async function buildAhnikByBalak({
   const sabhaName = bsList?.[0]?.sabhas?.name_gu || 'સભા';
   const vistarName = bsList?.[0]?.sabhas?.vistars?.name_gu || 'વિસ્તાર';
 
-  const { data: items } = await adminClient
+  const { data: items } = await getDbClient()
     .from('ahnik_items')
     .select('id, label_gu, label_en, sort_order')
     .order('sort_order', { ascending: true });
 
   const ahnikItems = items || [];
 
-  const { data: weekRecords } = await adminClient
+  const { data: weekRecords } = await getDbClient()
     .from('ahnik_weeks')
     .select('id, week_start_date, captured_by, karyakars!captured_by(full_name_gu)')
     .eq('balak_id', balakId)
@@ -533,7 +541,7 @@ export async function buildAhnikByBalak({
   const weekIds = weeks.map((w) => w.id);
   let entryRows: Array<{ ahnik_week_id: string; ahnik_item_id: string; done: boolean }> = [];
   if (weekIds.length > 0) {
-    const { data: entries } = await adminClient
+    const { data: entries } = await getDbClient()
       .from('ahnik_entries')
       .select('ahnik_week_id, ahnik_item_id, done')
       .in('ahnik_week_id', weekIds);
@@ -617,7 +625,7 @@ export async function buildNiyamRegister({
   let vistarName = 'બધા વિસ્તાર';
 
   if (sabhaId) {
-    const { data: sabhaRow } = await adminClient
+    const { data: sabhaRow } = await getDbClient()
       .from('sabhas')
       .select('name_gu, vistar_id, vistars(name_gu)')
       .eq('id', sabhaId)
@@ -629,7 +637,7 @@ export async function buildNiyamRegister({
     }
   }
 
-  const { data: niyams } = await adminClient
+  const { data: niyams } = await getDbClient()
     .from('niyams')
     .select(`
       id,
@@ -737,7 +745,7 @@ export async function buildKaryakarAccountability({
   actorName?: string;
   lang?: Lang;
 }): Promise<Report> {
-  const { data: karyakars } = await adminClient
+  const { data: karyakars } = await getDbClient()
     .from('karyakars')
     .select(`
       id,
@@ -787,7 +795,7 @@ export async function buildKaryakarAccountability({
     }
 
     // Fetch tasks for these sabhas within date range (excluding cancelled sessions!)
-    const { data: tasks } = await adminClient
+    const { data: tasks } = await getDbClient()
       .from('tasks')
       .select(`
         id,

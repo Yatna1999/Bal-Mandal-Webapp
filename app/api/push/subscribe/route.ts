@@ -3,6 +3,11 @@ import { createClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
 
+export async function GET() {
+  const vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || '';
+  return NextResponse.json({ vapidPublicKey });
+}
+
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();

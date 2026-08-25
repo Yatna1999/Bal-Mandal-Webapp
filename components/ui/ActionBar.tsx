@@ -14,10 +14,10 @@ export function ActionBar({
   left?: React.ReactNode;
 }) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-paper border-t border-rule p-3 max-w-[600px] mx-auto">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-sheet border-t border-rule p-3 max-w-[600px] mx-auto pb-[calc(12px+env(safe-area-inset-bottom,0px))]">
       <div className="flex items-center gap-3">
         {left && (
-          <div className="shrink-0 font-data text-[15px] font-medium text-ink [font-variant-numeric:tabular-nums]">
+          <div className="shrink-0 font-data text-[14px] font-medium text-ink [font-variant-numeric:tabular-nums] truncate max-w-[45%]">
             {left}
           </div>
         )}
