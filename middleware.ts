@@ -4,8 +4,18 @@ import { NextResponse, type NextRequest } from 'next/server';
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Exclude PWA files, icons, design check, and API routes from auth enforcement immediately
+  if (
+    pathname === '/design-check' ||
+    pathname === '/manifest.json' ||
+    pathname === '/sw.js' ||
+    pathname.startsWith('/icons/') ||
+    pathname.startsWith('/api/')
+  ) {
+    return NextResponse.next();
+  }
+
   // Guard: if env vars are missing, let the request through
-  // (this can happen during build or if env vars aren't configured)
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -45,11 +55,6 @@ export async function middleware(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  // Exclude design-check page and API routes from auth redirect enforcement
-  if (pathname === '/design-check' || pathname.startsWith('/api/')) {
-    return response;
-  }
 
   if (!user) {
     if (pathname !== '/login') {
@@ -98,6 +103,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon\\.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/((?!_next/static|_next/image|favicon\\.ico|manifest\\.json|sw\\.js|icons/|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 };

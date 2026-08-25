@@ -20,6 +20,7 @@ export const usePwa = () => useContext(PwaContext);
 export function PwaProvider({ children }: { children: React.ReactNode }) {
   const [isOffline, setIsOffline] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [dismissBanner, setDismissBanner] = useState(false);
 
   useEffect(() => {
     // 1. Register Service Worker on mount
@@ -102,6 +103,37 @@ export function PwaProvider({ children }: { children: React.ReactNode }) {
           <span>{t('errors.network')}</span>
         </div>
       )}
+
+      {/* Floating Install App Banner when browser detects installability */}
+      {deferredPrompt && !dismissBanner && (
+        <div className="fixed bottom-16 left-4 right-4 z-50 max-w-[500px] mx-auto bg-sheet border border-rule-strong rounded-md p-3 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 rounded-full bg-kumkum flex items-center justify-center shrink-0">
+              <div className="w-4 h-4 rounded-full bg-paper" />
+            </div>
+            <div className="min-w-0">
+              <div className="font-semibold text-[13px] text-ink truncate">બાળ સભા એપ ઇન્સ્ટોલ કરો</div>
+              <div className="text-[11px] text-ink-soft truncate">હોમ સ્ક્રીન પર ઉમેરીને ઝડપથી વાપરો</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={promptInstall}
+              className="h-8 px-3 bg-kumkum text-white text-[12px] font-semibold rounded-sm transition-colors hover:bg-kumkum-deep"
+            >
+              ઇન્સ્ટોલ
+            </button>
+            <button
+              onClick={() => setDismissBanner(true)}
+              className="w-7 h-7 text-ink-faint hover:text-ink flex items-center justify-center rounded-sm text-[14px]"
+              aria-label="Close"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
       {children}
     </PwaContext.Provider>
   );
