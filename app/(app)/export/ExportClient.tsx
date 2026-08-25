@@ -130,8 +130,8 @@ export function ExportClient({
   };
 
   const handleExportPdf = () => {
-    // Triggers browser print window for PDF export
-    window.print();
+    const url = `/export/print/${selectedReport}?sabhaId=${selectedSabhaId}&from=${fromDate}&to=${toDate}&weekStart=${fromDate}&lang=${lang}`;
+    window.open(url, '_blank');
   };
 
   return (
