@@ -60,6 +60,11 @@ export const gu = {
     transferKishore: 'કિશોર મંડળમાં મોકલો',
     attendanceHistory: 'હાજરીનો ઇતિહાસ',
     ahnikHistory: 'આહ્નિકનો ઇતિહાસ',
+    tabs: {
+      details: 'વિગત',
+      attendance: 'હાજરી',
+      ahnik: 'આહ્નિક',
+    },
   },
   satsang: {
     satsangi: 'સત્સંગી',
