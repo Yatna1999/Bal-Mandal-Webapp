@@ -10,6 +10,31 @@ export async function seedAttendanceForBalak(balakId: string): Promise<void> {
   console.log('seedAttendanceForBalak stub called for balakId:', balakId);
 }
 
+/** Task 1: Karyakram predicate */
+export function isKaryakramDone(session: { karyakram_text?: string | null }): boolean {
+  return !!(session.karyakram_text && session.karyakram_text.trim().length > 0);
+}
+
+/** Task 2: Presabha predicate */
+export function isPresabhaDone(attendanceRows: Array<{ presabha_status: string }>): boolean {
+  return attendanceRows.length > 0 && attendanceRows.every((r) => r.presabha_status !== 'pending');
+}
+
+/** Task 3: Attendance predicate */
+export function isAttendanceDone(attendanceRows: Array<{ attendance_status: string | null }>): boolean {
+  return attendanceRows.length > 0 && attendanceRows.every((r) => r.attendance_status !== null);
+}
+
+/** Task 4: Ahnik predicate */
+export function isAhnikDone(enrolledBalakCount: number, ahnikWeeksCount: number): boolean {
+  return enrolledBalakCount > 0 && ahnikWeeksCount >= enrolledBalakCount;
+}
+
+/** Task 5: Aheval predicate */
+export function isAhevalDone(session: { aheval_done: boolean }): boolean {
+  return !!session.aheval_done;
+}
+
 /**
  * Ensure a scheduled session exists for every occurrence of each active
  * sabha's default_weekday within the next `horizonDays`.
