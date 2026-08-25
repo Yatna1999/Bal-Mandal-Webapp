@@ -60,6 +60,16 @@ export function formatTimeRangeGu(start: string, end: string): string {
   return `${s} થી ${e} ${periodWord(eh)}`;
 }
 
+/** '૯:૩૦ સાંજે' from Date or ISO timestamp string */
+export function formatTimeGu(d: Date | string): string {
+  const x = ist(d);
+  const h = x.getHours();
+  const m = x.getMinutes();
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  const timeStr = `${toGu(h12)}:${toGu(String(m).padStart(2, '0'))}`;
+  return `${timeStr} ${periodWord(h)}`;
+}
+
 /** ISO week Monday, as 'yyyy-MM-dd'. Used as the ahnik week key. */
 export function isoWeekStart(d: Date | string): string {
   const x = ist(d);

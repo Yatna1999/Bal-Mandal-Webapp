@@ -71,16 +71,28 @@ export function MoreClient({
 
         {/* Sabha Management (Vistar Scope) */}
         {vistarScope && (
-          <Row
-            href="/admin/sabhas"
-            title={t('more.sabhaAdmin')}
-            subtitle="સભાના દિવસ, સમય, સ્થળ અને પ્રકારની વિગત"
-            right={
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-ink-faint">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            }
-          />
+          <>
+            <Row
+              href="/admin/sabhas"
+              title={t('more.sabhaAdmin')}
+              subtitle="સભાના દિવસ, સમય, સ્થળ અને પ્રકારની વિગત"
+              right={
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-ink-faint">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              }
+            />
+            <Row
+              href="/admin/audit"
+              title={t('audit.title')}
+              subtitle="બદલાયેલી વિગતો અને સુધારાનો ઇતિહાસ"
+              right={
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-ink-faint">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              }
+            />
+          </>
         )}
       </div>
 
