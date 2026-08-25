@@ -12,6 +12,7 @@ import {
   escalateOverdue,
 } from '@/lib/tasks';
 import { expireNiyams } from '@/lib/niyams';
+import { sendReminders, pruneDeadSubscriptions } from '@/lib/push';
 
 export const maxDuration = 60;
 export const dynamic = 'force-dynamic';
@@ -22,15 +23,6 @@ function safeCompareSecret(headerSecret: string | null, envSecret: string | unde
   const bufEnv = Buffer.from(envSecret);
   if (bufHeader.length !== bufEnv.length) return false;
   return crypto.timingSafeEqual(bufHeader, bufEnv);
-}
-
-// Stubs for WO-31 push notifications
-async function sendReminders() {
-  return { sent: 0 };
-}
-
-async function pruneDeadSubscriptions() {
-  return { pruned: 0 };
 }
 
 export async function POST(request: Request) {
