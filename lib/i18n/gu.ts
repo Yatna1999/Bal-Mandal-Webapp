@@ -229,6 +229,8 @@ export const gu = {
     lastMonth: 'ગયો મહિનો',
     last3Months: 'છેલ્લા ૩ મહિના',
     custom: 'પસંદ કરેલો સમયગાળો',
+    todayTomorrow: 'આજ અને આવતીકાલ',
+    viewAllTasks: 'બધા કામ જુઓ →',
     bySabha: 'સભા પ્રમાણે',
   },
   exportUi: {
