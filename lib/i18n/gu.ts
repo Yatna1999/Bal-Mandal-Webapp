@@ -65,6 +65,11 @@ export const gu = {
       attendance: 'હાજરી',
       ahnik: 'આહ્નિક',
     },
+    attStats: {
+      present: 'આવ્યા',
+      total: 'કુલ સભા',
+      percent: 'ટકાવારી',
+    },
   },
   satsang: {
     satsangi: 'સત્સંગી',

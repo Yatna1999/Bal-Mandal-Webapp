@@ -7,7 +7,10 @@ import { Pill } from '@/components/ui/Pill';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Sheet } from '@/components/ui/Sheet';
 import { useBalakPhotoUrl } from '@/lib/hooks/useBalakPhotoUrl';
-import { telHref, toGu, ageFromDob, formatDateGu } from '@/lib/format';
+import { Stat, StatGroup } from '@/components/ui/Stat';
+import { Row } from '@/components/ui/Row';
+import { Chandlo } from '@/components/ui/Chandlo';
+import { telHref, toGu, ageFromDob, formatDateGu, formatWeekdayDateGu, formatWeekRangeGu } from '@/lib/format';
 import { isVistarScope } from '@/lib/auth';
 import { t } from '@/lib/i18n';
 import type { RoleT, Database, MediumT, SatsangStatusT } from '@/lib/database.types';
@@ -53,6 +56,59 @@ export function BalakProfileClient({
 }) {
   const [activeTab, setActiveTab] = useState<'details' | 'attendance' | 'ahnik'>('details');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Lazy loading state for Attendance Tab
+  const [attLoading, setAttLoading] = useState(false);
+  const [attLoaded, setAttLoaded] = useState(false);
+  const [attData, setAttData] = useState<{
+    stats: { present: number; total: number; percent: number };
+    sessions: Array<{
+      id: string;
+      sabha_name_gu: string;
+      session_date: string;
+      status: 'present' | 'absent';
+    }>;
+  } | null>(null);
+
+  // Lazy loading state for Ahnik Tab
+  const [ahnikLoading, setAhnikLoading] = useState(false);
+  const [ahnikLoaded, setAhnikLoaded] = useState(false);
+  const [ahnikData, setAhnikData] = useState<{
+    items: Array<{ id: string; code: string; label_gu: string }>;
+    weeks: Array<{
+      week_start_date: string;
+      has_record: boolean;
+      entries: Record<string, boolean | null>;
+    }>;
+  } | null>(null);
+
+  const handleTabChange = (tab: 'details' | 'attendance' | 'ahnik') => {
+    setActiveTab(tab);
+
+    if (tab === 'attendance' && !attLoaded && !attLoading) {
+      setAttLoading(true);
+      fetch(`/api/balako/${balak.id}/attendance`)
+        .then((res) => res.json())
+        .then((data) => {
+          setAttData(data);
+          setAttLoaded(true);
+        })
+        .catch((err) => console.error('Failed to load attendance:', err))
+        .finally(() => setAttLoading(false));
+    }
+
+    if (tab === 'ahnik' && !ahnikLoaded && !ahnikLoading) {
+      setAhnikLoading(true);
+      fetch(`/api/balako/${balak.id}/ahnik`)
+        .then((res) => res.json())
+        .then((data) => {
+          setAhnikData(data);
+          setAhnikLoaded(true);
+        })
+        .catch((err) => console.error('Failed to load ahnik:', err))
+        .finally(() => setAhnikLoading(false));
+    }
+  };
 
   const { data: photoUrl } = useBalakPhotoUrl(balak.photo_path);
   const age = ageFromDob(balak.dob);
@@ -130,7 +186,7 @@ export function BalakProfileClient({
         <div className="border-b border-rule flex items-center gap-6 text-[15px]">
           <button
             type="button"
-            onClick={() => setActiveTab('details')}
+            onClick={() => handleTabChange('details')}
             className={`pb-2.5 transition-colors ${
               activeTab === 'details'
                 ? 'border-b-2 border-kumkum text-kumkum font-semibold'
@@ -139,10 +195,9 @@ export function BalakProfileClient({
           >
             {t('balak.tabs.details')}
           </button>
-          {/* WO-18: Attendance Tab Header */}
           <button
             type="button"
-            onClick={() => setActiveTab('attendance')}
+            onClick={() => handleTabChange('attendance')}
             className={`pb-2.5 transition-colors ${
               activeTab === 'attendance'
                 ? 'border-b-2 border-kumkum text-kumkum font-semibold'
@@ -151,10 +206,9 @@ export function BalakProfileClient({
           >
             {t('balak.tabs.attendance')}
           </button>
-          {/* WO-18: Ahnik Tab Header */}
           <button
             type="button"
-            onClick={() => setActiveTab('ahnik')}
+            onClick={() => handleTabChange('ahnik')}
             className={`pb-2.5 transition-colors ${
               activeTab === 'ahnik'
                 ? 'border-b-2 border-kumkum text-kumkum font-semibold'
@@ -338,12 +392,127 @@ export function BalakProfileClient({
           </div>
         )}
 
-        {/* Tab 2 & 3 Placeholder (WO-18) */}
-        {activeTab !== 'details' && (
-          <div className="bg-sheet border border-rule rounded-md p-8 text-center text-ink-soft text-[15px] leading-relaxed">
-            {activeTab === 'attendance'
-              ? t('balak.attendanceHistory')
-              : t('balak.ahnikHistory')}
+        {/* Tab 2: હાજરી (Attendance History) */}
+        {activeTab === 'attendance' && (
+          <div className="space-y-6">
+            {attLoading ? (
+              <div className="bg-sheet border border-rule rounded-md p-8 text-center text-ink-soft text-[15px]">
+                {t('common.loading')}
+              </div>
+            ) : attData && attData.stats.total > 0 ? (
+              <div className="space-y-4">
+                {/* Summary Strip */}
+                <StatGroup className="bg-sheet rounded-md">
+                  <Stat
+                    value={toGu(attData.stats.present)}
+                    label={t('balak.attStats.present')}
+                    className="flex-1"
+                  />
+                  <Stat
+                    value={toGu(attData.stats.total)}
+                    label={t('balak.attStats.total')}
+                    className="flex-1"
+                  />
+                  <Stat
+                    value={`${toGu(attData.stats.percent)}%`}
+                    label={t('balak.attStats.percent')}
+                    className="flex-1"
+                  />
+                </StatGroup>
+
+                {/* Session Rows */}
+                <div className="border border-rule rounded-md overflow-hidden bg-sheet">
+                  {attData.sessions.map((session) => (
+                    <Row
+                      key={session.id}
+                      title={session.sabha_name_gu}
+                      subtitle={formatWeekdayDateGu(session.session_date)}
+                      right={
+                        <Chandlo
+                          state={session.status === 'present' ? 'done' : 'not-done'}
+                          label={session.status}
+                        />
+                      }
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              /* Empty Past Sabha State */
+              <div className="bg-sheet border border-rule rounded-md p-8 text-center text-ink-soft text-[15px] leading-relaxed">
+                {t('empty.pastSabha')}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Tab 3: આહ્નિક (Ahnik History) */}
+        {activeTab === 'ahnik' && (
+          <div className="space-y-6">
+            {ahnikLoading ? (
+              <div className="bg-sheet border border-rule rounded-md p-8 text-center text-ink-soft text-[15px]">
+                {t('common.loading')}
+              </div>
+            ) : ahnikData && ahnikData.weeks.some((w) => w.has_record) ? (
+              <div className="border border-rule rounded-md overflow-hidden bg-sheet">
+                <div className="overflow-x-auto no-scrollbar">
+                  <table className="w-full text-left border-collapse min-w-[500px]">
+                    <thead>
+                      <tr className="border-b border-rule bg-paper">
+                        <th className="sticky left-0 bg-paper z-10 px-3 py-4 text-[12px] font-medium text-ink-soft min-w-[110px] border-r border-rule">
+                          {t('ahnik.week')}
+                        </th>
+                        {ahnikData.items.map((item) => (
+                          <th
+                            key={item.id}
+                            className="px-2 py-4 text-center text-[11px] font-medium text-ink leading-tight h-[80px] align-bottom"
+                          >
+                            <div className="whitespace-nowrap -rotate-45 origin-bottom-left transform translate-x-4 mb-2">
+                              {t(`ahnik.items.${item.code}` as Parameters<typeof t>[0]) || item.label_gu}
+                            </div>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-rule">
+                      {ahnikData.weeks.map((week) => (
+                        <tr key={week.week_start_date} className="hover:bg-paper/50">
+                          <td className="sticky left-0 bg-sheet z-10 px-3 py-2 text-[12px] font-data text-ink-soft border-r border-rule whitespace-nowrap">
+                            {formatWeekRangeGu(week.week_start_date)}
+                          </td>
+                          {ahnikData.items.map((item) => {
+                            const val = week.entries[item.id];
+                            const state: 'done' | 'not-done' | 'pending' =
+                              val === true
+                                ? 'done'
+                                : val === false
+                                ? 'not-done'
+                                : 'pending';
+
+                            return (
+                              <td key={item.id} className="p-1 text-center align-middle">
+                                <div className="w-8 h-8 mx-auto flex items-center justify-center">
+                                  <Chandlo
+                                    state={state}
+                                    size={16}
+                                    label={item.label_gu}
+                                  />
+                                </div>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ) : (
+              /* Empty Ahnik History State */
+              <div className="bg-sheet border border-rule rounded-md p-8 text-center text-ink-soft text-[15px] leading-relaxed">
+                {t('empty.ahnikHistory')}
+              </div>
+            )}
           </div>
         )}
       </main>
