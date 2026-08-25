@@ -112,6 +112,8 @@ export const gu = {
   attendance: {
     title: 'હાજરી',
     sheet: 'હાજરી પત્રક',
+    colBalak: 'બાળક',
+    colContact: 'સંપર્ક',
     present: 'હાજર',
     absent: 'ગેરહાજર',
     notMarked: 'નોંધાયું નથી',
