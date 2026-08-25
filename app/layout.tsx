@@ -28,13 +28,17 @@ export const metadata: Metadata = {
   description: "Paldi Vistar Bal Sabha Management System",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+import Providers from "./providers";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="gu"
       className={`${shrikhand.variable} ${hind.variable} ${mono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
