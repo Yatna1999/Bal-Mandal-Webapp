@@ -50,6 +50,9 @@ export async function POST(
       return NextResponse.json({ error: errObj?.error?.message || 'Save failed' }, { status: 400 });
     }
 
+    const { recomputeTask } = await import('@/lib/tasks');
+    await recomputeTask(sessionId, 'mark_attendance', user.id);
+
     return NextResponse.json({ success: true, updatedCount: rows.length });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);

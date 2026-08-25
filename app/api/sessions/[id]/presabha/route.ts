@@ -44,6 +44,9 @@ export async function PATCH(
         return NextResponse.json({ error: error.message }, { status: 400 });
       }
 
+      const { recomputeTask } = await import('@/lib/tasks');
+      await recomputeTask(sessionId, 'presabha_followup', user.id);
+
       return NextResponse.json({ success: true });
     }
 

@@ -85,6 +85,9 @@ export async function POST(
       return NextResponse.json({ error: eErr.message }, { status: 400 });
     }
 
+    const { recomputeTask } = await import('@/lib/tasks');
+    await recomputeTask(sessionId, 'ahnik_followup', user.id);
+
     return NextResponse.json({ success: true, weekId });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);

@@ -282,6 +282,42 @@ export function SessionHubClient({ session }: { session: SessionHubData }) {
               <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
             </svg>
           </button>
+
+          <button
+            type="button"
+            onClick={async () => {
+              if (!confirm(t('sabha.cancelConfirm') || 'શું તમે ખરેખર આ સભા રદ કરવા માંગો છો?')) return;
+              setIsMenuOpen(false);
+              try {
+                const res = await fetch(`/api/sessions/${session.id}/cancel`, { method: 'POST' });
+                if (res.ok) {
+                  showToast(t('sabha.cancelled'));
+                  router.refresh();
+                } else {
+                  showToast(t('errors.saveFailed'));
+                }
+              } catch {
+                showToast(t('errors.network'));
+              }
+            }}
+            className="w-full h-[48px] px-4 bg-kumkum-wash border border-kumkum text-kumkum font-semibold rounded-md flex items-center justify-between text-[15px] hover:bg-kumkum/10 transition-colors"
+          >
+            <span>{t('sabha.cancel')}</span>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="15" y1="9" x2="9" y2="15" />
+              <line x1="9" y1="9" x2="15" y2="15" />
+            </svg>
+          </button>
         </div>
       </Sheet>
 
