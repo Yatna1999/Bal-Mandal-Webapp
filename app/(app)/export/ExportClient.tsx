@@ -232,7 +232,7 @@ export function ExportClient({
               type="button"
               onClick={() => setLang('gu')}
               className={`h-[40px] text-[14px] font-semibold rounded transition-colors ${
-                lang === 'gu' ? 'bg-indigo text-white shadow-sm' : 'text-ink-soft hover:text-ink'
+                lang === 'gu' ? 'bg-indigo text-white font-semibold' : 'text-ink-soft hover:text-ink'
               }`}
             >
               {t('exportUi.dateGu')}
@@ -241,7 +241,7 @@ export function ExportClient({
               type="button"
               onClick={() => setLang('en')}
               className={`h-[40px] text-[14px] font-semibold rounded transition-colors ${
-                lang === 'en' ? 'bg-indigo text-white shadow-sm' : 'text-ink-soft hover:text-ink'
+                lang === 'en' ? 'bg-indigo text-white font-semibold' : 'text-ink-soft hover:text-ink'
               }`}
             >
               {t('exportUi.dateEn')}

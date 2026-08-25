@@ -228,7 +228,7 @@ export function NotificationsClient({
       {/* OEM Help Modal */}
       {showOemHelpModal && (
         <div className="fixed inset-0 z-50 bg-ink/40 flex items-center justify-center p-4">
-          <div className="bg-sheet border border-rule rounded-lg p-6 max-w-[500px] w-full space-y-4 max-h-[85vh] overflow-y-auto">
+          <div className="bg-sheet border border-rule rounded-md p-6 max-w-[500px] w-full space-y-4 max-h-[85vh] overflow-y-auto">
             <div className="flex items-center justify-between border-b border-rule pb-3">
               <h3 className="text-[18px] font-semibold text-ink">
                 ફોન પ્રમાણે Settings (Battery Optimization)

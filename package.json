@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "guard": "npx tsx scripts/guard.ts",
     "seed:demo": "npx tsx scripts/seed-demo-data.ts",
     "clean:demo": "npx tsx scripts/clean-demo-data.ts"
   },

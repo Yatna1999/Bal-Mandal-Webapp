@@ -80,7 +80,7 @@ export function PwaProvider({ children }: { children: React.ReactNode }) {
     >
       {/* Offline Banner strip fixed under header when offline */}
       {isOffline && (
-        <div className="fixed top-0 left-0 right-0 z-50 bg-kumkum text-white text-[13px] font-semibold py-1.5 px-4 text-center shadow-md flex items-center justify-center gap-2">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-kumkum text-white text-[13px] font-semibold py-1.5 px-4 text-center border-b border-rule flex items-center justify-center gap-2">
           <svg
             width="16"
             height="16"

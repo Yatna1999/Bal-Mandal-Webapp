@@ -49,8 +49,8 @@ export function PrintReportClient({ report }: { report: Report }) {
         @media print {
           html,
           body {
-            background: #ffffff !important;
-            color: #000000 !important;
+            background: #fff !important;
+            color: #000 !important;
             margin: 0 !important;
             padding: 0 !important;
           }
@@ -71,12 +71,12 @@ export function PrintReportClient({ report }: { report: Report }) {
           }
           th,
           td {
-            border: 0.5pt solid #999999 !important;
+            border: 0.5pt solid #999 !important;
             padding: 3pt 4pt !important;
             vertical-align: middle !important;
           }
           th {
-            background-color: #f2f0eb !important;
+            background-color: #f2f !important;
             font-weight: 600 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
@@ -138,7 +138,7 @@ export function PrintReportClient({ report }: { report: Report }) {
                     <th
                       key={col.key}
                       style={{ width: `${col.width}%` }}
-                      className={`bg-[#F2F0EB] font-semibold border border-rule p-1.5 align-bottom ${
+                      className={`bg-paper font-semibold border border-rule p-1.5 align-bottom ${
                         isAhnikItemCol ? 'relative' : ''
                       }`}
                     >
@@ -166,7 +166,7 @@ export function PrintReportClient({ report }: { report: Report }) {
                       <td
                         key={col.key}
                         className={`border border-rule p-1.5 align-middle ${
-                          isAbs ? 'bg-[#FBEEEF] font-semibold text-kumkum' : ''
+                          isAbs ? 'bg-kumkum-wash font-semibold text-kumkum' : ''
                         } ${isNameCol ? 'break-words whitespace-normal' : ''}`}
                         style={isNameCol ? { wordBreak: 'keep-all' } : undefined}
                       >
@@ -182,7 +182,7 @@ export function PrintReportClient({ report }: { report: Report }) {
                 footerRows.map((fRow, fIdx) => (
                   <tr
                     key={`f_${fIdx}`}
-                    className="bg-[#F9F8F6] font-semibold border-t-2 border-rule"
+                    className="bg-paper font-semibold border-t-2 border-rule"
                   >
                     {chunk.cols.map((col) => (
                       <td
