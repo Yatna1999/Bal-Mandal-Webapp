@@ -232,6 +232,8 @@ export const gu = {
     todayTomorrow: 'આજ અને આવતીકાલ',
     viewAllTasks: 'બધા કામ જુઓ →',
     bySabha: 'સભા પ્રમાણે',
+    downloadReport: 'અહેવાલ ઉતારો',
+    cancelledFootnote: 'રદ થયેલી સભાઓ ટકાવારીની ગણતરીમાં નથી.',
   },
   exportUi: {
     title: 'નિકાસ',
