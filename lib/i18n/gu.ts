@@ -58,6 +58,7 @@ export const gu = {
     archiveConfirm: 'આ બાળકને આર્કાઇવ કરવો છે? જૂની હાજરી અને આહ્નિકની નોંધ રહેશે.',
     archived: 'આર્કાઇવ કરેલ',
     transferKishore: 'કિશોર મંડળમાં મોકલો',
+    unarchive: 'ફરીથી ચાલુ કરો',
     attendanceHistory: 'હાજરીનો ઇતિહાસ',
     ahnikHistory: 'આહ્નિકનો ઇતિહાસ',
     tabs: {

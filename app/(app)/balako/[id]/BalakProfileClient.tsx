@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { AppHeader } from '@/components/ui/AppHeader';
 import { Pill } from '@/components/ui/Pill';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Sheet } from '@/components/ui/Sheet';
+import { useToast } from '@/components/ui/Toast';
 import { useBalakPhotoUrl } from '@/lib/hooks/useBalakPhotoUrl';
 import { Stat, StatGroup } from '@/components/ui/Stat';
 import { Row } from '@/components/ui/Row';
@@ -34,6 +36,10 @@ export interface BalakProfileData {
   father_mobile: string;
   status: string;
   created_at: string;
+  archive_reason_gu?: string | null;
+  archived_at?: string | null;
+  archived_by?: string | null;
+  archived_by_name_gu?: string | null;
   standard_label_gu?: string;
 }
 
@@ -115,6 +121,29 @@ export function BalakProfileClient({
 
   const vistarScope = isVistarScope(userRole);
 
+  const router = useRouter();
+  const { showToast } = useToast();
+
+  const handleUnarchive = async () => {
+    try {
+      const res = await fetch(`/api/balako/${balak.id}/archive`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'unarchive' }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        showToast(t('common.lastUpdated'));
+        router.refresh();
+      } else {
+        showToast(data.error || t('errors.saveFailed'));
+      }
+    } catch {
+      showToast(t('errors.network'));
+    }
+  };
+
   return (
     <div className="min-h-screen bg-paper pb-[116px]">
       {/* Header with Overflow Menu */}
@@ -134,6 +163,48 @@ export function BalakProfileClient({
       />
 
       <main className="max-w-[600px] mx-auto space-y-6 pt-4 px-4">
+        {/* Archived / Transferred Banner */}
+        {balak.status !== 'active' && (
+          <div className="bg-amber-wash border border-amber rounded-md p-4 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="font-semibold text-[15px] text-amber">
+                {balak.status === 'transferred_kishore'
+                  ? t('balak.transferKishore')
+                  : t('balak.archived')}
+              </span>
+              {balak.archived_at && (
+                <span className="text-[12px] font-data text-ink-soft">
+                  {formatDateGu(balak.archived_at)}
+                </span>
+              )}
+            </div>
+
+            {balak.archive_reason_gu && (
+              <p className="text-[14px] text-ink leading-relaxed">
+                {balak.archive_reason_gu}
+              </p>
+            )}
+
+            {balak.archived_by_name_gu && (
+              <p className="text-[12px] text-ink-soft">
+                {t('common.by')}: {balak.archived_by_name_gu}
+              </p>
+            )}
+
+            {/* Unarchive Action for super_admin */}
+            {userRole === 'super_admin' && (
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={handleUnarchive}
+                  className="h-[36px] px-3 bg-kumkum text-white text-[13px] font-semibold rounded-md flex items-center justify-center transition-opacity hover:opacity-95"
+                >
+                  {t('balak.unarchive')}
+                </button>
+              </div>
+            )}
+          </div>
+        )}
         {/* Identity Block (Left aligned) */}
         <div className="flex items-center gap-4">
           <div className="shrink-0">

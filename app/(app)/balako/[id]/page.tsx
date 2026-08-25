@@ -34,6 +34,9 @@ export default async function BalakProfilePage({
       father_mobile,
       status,
       created_at,
+      archive_reason_gu,
+      archived_at,
+      archived_by,
       standards (
         label_gu
       )
@@ -46,12 +49,25 @@ export default async function BalakProfilePage({
     notFound();
   }
 
+  let archivedByNameGu: string | null = null;
+  if (balakData.archived_by) {
+    const { data: archKaryakar } = await supabase
+      .from('karyakars')
+      .select('full_name_gu')
+      .eq('id', balakData.archived_by)
+      .single();
+    if (archKaryakar) {
+      archivedByNameGu = archKaryakar.full_name_gu;
+    }
+  }
+
   const rawStandard = balakData.standards as unknown as {
     label_gu: string;
   } | null;
 
   const balak: BalakProfileData = {
     ...balakData,
+    archived_by_name_gu: archivedByNameGu,
     standard_label_gu: rawStandard?.label_gu || balakData.standard_code,
   };
 
