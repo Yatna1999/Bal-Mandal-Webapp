@@ -37,8 +37,8 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Exclude design-check page from auth enforcement for testing
-  if (pathname === '/design-check') {
+  // Exclude design-check page and API routes from auth redirect enforcement
+  if (pathname === '/design-check' || pathname.startsWith('/api/')) {
     return response;
   }
 
