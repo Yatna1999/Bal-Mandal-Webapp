@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:demo": "npx tsx scripts/seed-demo-data.ts",
+    "clean:demo": "npx tsx scripts/clean-demo-data.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
