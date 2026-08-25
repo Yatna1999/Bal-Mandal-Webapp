@@ -3,6 +3,7 @@ import { Row } from '@/components/ui/Row';
 import { Pill } from '@/components/ui/Pill';
 import { Stat, StatGroup } from '@/components/ui/Stat';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { PhotoPicker } from '@/components/balak/PhotoPicker';
 
 export default function DesignCheckPage() {
   const colorTokens = [
@@ -101,6 +102,14 @@ export default function DesignCheckPage() {
           <Stat value="૯૨%" label="હાજરી ટકાવારી" className="flex-1" />
           <Stat value="૩" label="બાકી કામ" className="flex-1" />
         </StatGroup>
+      </section>
+
+      {/* Primitive 5: PhotoPicker */}
+      <section className="space-y-3">
+        <SectionHeader>બાળક ફોટો (PhotoPicker)</SectionHeader>
+        <div className="bg-sheet p-6 border border-rule rounded-md flex justify-center">
+          <PhotoPicker vistarId="demo-vistar" balakId="demo-balak" />
+        </div>
       </section>
 
       {/* Colour Tokens */}
