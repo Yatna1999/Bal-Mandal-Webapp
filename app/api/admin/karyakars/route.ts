@@ -5,6 +5,8 @@ import { usernameToEmail } from '@/lib/auth';
 import { cleanMobile } from '@/lib/format';
 import type { RoleT } from '@/lib/database.types';
 
+export const dynamic = 'force-dynamic';
+
 function generateTempPassword(length = 10): string {
   const chars = 'abcdefghjkmnpqrstuvwxyz23456789';
   let res = '';

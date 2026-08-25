@@ -3,6 +3,8 @@ import webPush from 'web-push';
 import { createClient } from '@/lib/supabase/server';
 import { t } from '@/lib/i18n';
 
+export const dynamic = 'force-dynamic';
+
 const vapidPublic = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || '';
 const vapidPrivate = process.env.VAPID_PRIVATE_KEY || '';
 const vapidSubject = process.env.VAPID_SUBJECT || 'mailto:admin@balsabha.local';

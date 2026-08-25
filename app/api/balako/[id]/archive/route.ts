@@ -4,6 +4,8 @@ import { isVistarScope } from '@/lib/auth';
 import { t } from '@/lib/i18n';
 import type { BalakStatusT } from '@/lib/database.types';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }

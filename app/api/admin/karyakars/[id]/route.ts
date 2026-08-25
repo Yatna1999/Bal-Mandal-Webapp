@@ -4,6 +4,8 @@ import { createClient } from '@/lib/supabase/server';
 import { cleanMobile } from '@/lib/format';
 import type { RoleT, Database } from '@/lib/database.types';
 
+export const dynamic = 'force-dynamic';
+
 function generateTempPassword(length = 10): string {
   const chars = 'abcdefghjkmnpqrstuvwxyz23456789';
   let res = '';
