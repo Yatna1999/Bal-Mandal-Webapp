@@ -235,6 +235,15 @@ export const gu = {
     downloadReport: 'અહેવાલ ઉતારો',
     cancelledFootnote: 'રદ થયેલી સભાઓ ટકાવારીની ગણતરીમાં નથી.',
   },
+  more: {
+    title: 'વધારે',
+    installApp: 'એપ તરીકે ઇન્સ્ટોલ કરો',
+    notifications: 'સૂચનાઓ',
+    export: 'અહેવાલ નિકાસ',
+    karyakarAdmin: 'કાર્યકર વ્યવસ્થાપન',
+    sabhaAdmin: 'સભા વ્યવસ્થાપન',
+    logout: 'લૉગ આઉટ',
+  },
   exportUi: {
     title: 'નિકાસ',
     excel: 'એક્સેલમાં ઉતારો',
