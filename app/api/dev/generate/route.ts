@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
-import { generateSessions, markHeldSessions } from '@/lib/sessions';
+import { generateSessions, markHeldSessions, seedUpcomingAttendance } from '@/lib/sessions';
 
 function safeCompare(a: string, b: string): boolean {
   if (a.length !== b.length) return false;
@@ -17,10 +17,12 @@ export async function POST(request: Request) {
     }
 
     const genRes = await generateSessions();
+    const seedRes = await seedUpcomingAttendance();
     const markRes = await markHeldSessions();
 
     return NextResponse.json({
       generate: genRes,
+      seedAttendance: seedRes,
       markHeld: markRes,
     });
   } catch (err: unknown) {

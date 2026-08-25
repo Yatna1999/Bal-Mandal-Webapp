@@ -4,10 +4,151 @@ import { adminClient } from '@/lib/supabase/admin';
 import { TZ } from '@/lib/format';
 import type { Database } from '@/lib/database.types';
 
-// TODO: WO-23 - Seed attendance records for newly registered balak across upcoming sessions
-export async function seedAttendanceForBalak(balakId: string): Promise<void> {
-  // Stub implementation for WO-05
-  console.log('seedAttendanceForBalak stub called for balakId:', balakId);
+/**
+ * Create missing attendance rows for one session.
+ * Idempotent. Safe to call repeatedly.
+ */
+export async function seedAttendanceRows(sessionId: string): Promise<{ created: number }> {
+  // 1. Get session info
+  const { data: session } = await adminClient
+    .from('sabha_sessions')
+    .select('id, sabha_id, status')
+    .eq('id', sessionId)
+    .single();
+
+  if (!session || session.status !== 'scheduled') {
+    return { created: 0 };
+  }
+
+  // 2. Fetch active balako enrolled in this sabha
+  const { data: enrolledBalako } = await adminClient
+    .from('balak_sabhas')
+    .select('balak_id, balako!inner(status)')
+    .eq('sabha_id', session.sabha_id)
+    .eq('balako.status', 'active');
+
+  if (!enrolledBalako || enrolledBalako.length === 0) {
+    return { created: 0 };
+  }
+
+  const rowsToInsert = enrolledBalako.map((b) => ({
+    session_id: sessionId,
+    balak_id: b.balak_id,
+    presabha_status: 'pending' as const,
+    presabha_contacted: 'none' as const,
+    attendance_status: null,
+  }));
+
+  const { data: inserted, error } = await adminClient
+    .from('attendance')
+    .upsert(rowsToInsert, {
+      onConflict: 'session_id,balak_id',
+      ignoreDuplicates: true,
+    })
+    .select('id');
+
+  if (error) {
+    console.error('Failed to seed attendance rows:', error);
+    throw new Error(error.message);
+  }
+
+  return { created: inserted ? inserted.length : 0 };
+}
+
+/**
+ * Called after a balak is registered or enrolled into a new sabha.
+ * Seeds them into that sabha's scheduled sessions in the next 3 days.
+ */
+export async function seedAttendanceForBalak(balakId: string): Promise<{ created: number }> {
+  // 1. Verify balak status
+  const { data: balak } = await adminClient
+    .from('balako')
+    .select('id, status')
+    .eq('id', balakId)
+    .single();
+
+  if (!balak || balak.status !== 'active') {
+    return { created: 0 };
+  }
+
+  // 2. Get enrolled sabha IDs
+  const { data: enrolledSabhas } = await adminClient
+    .from('balak_sabhas')
+    .select('sabha_id')
+    .eq('balak_id', balakId);
+
+  const sabhaIds = (enrolledSabhas || []).map((s) => s.sabha_id);
+  if (sabhaIds.length === 0) {
+    return { created: 0 };
+  }
+
+  // 3. Find scheduled sessions in next 3 days (IST)
+  const now = new Date();
+  const todayStr = formatInTimeZone(now, TZ, 'yyyy-MM-dd');
+  const threeDaysLater = addDays(toZonedTime(now, TZ), 3);
+  const maxDateStr = formatInTimeZone(threeDaysLater, TZ, 'yyyy-MM-dd');
+
+  const { data: sessions } = await adminClient
+    .from('sabha_sessions')
+    .select('id')
+    .in('sabha_id', sabhaIds)
+    .eq('status', 'scheduled')
+    .gte('session_date', todayStr)
+    .lte('session_date', maxDateStr);
+
+  if (!sessions || sessions.length === 0) {
+    return { created: 0 };
+  }
+
+  const rowsToInsert = sessions.map((s) => ({
+    session_id: s.id,
+    balak_id: balakId,
+    presabha_status: 'pending' as const,
+    presabha_contacted: 'none' as const,
+    attendance_status: null,
+  }));
+
+  const { data: inserted, error } = await adminClient
+    .from('attendance')
+    .upsert(rowsToInsert, {
+      onConflict: 'session_id,balak_id',
+      ignoreDuplicates: true,
+    })
+    .select('id');
+
+  if (error) {
+    console.error('Failed to seed attendance for balak:', error);
+    throw new Error(error.message);
+  }
+
+  return { created: inserted ? inserted.length : 0 };
+}
+
+/** Batch version for the cron: all scheduled sessions within 3 days. */
+export async function seedUpcomingAttendance(): Promise<{ created: number }> {
+  const now = new Date();
+  const todayStr = formatInTimeZone(now, TZ, 'yyyy-MM-dd');
+  const threeDaysLater = addDays(toZonedTime(now, TZ), 3);
+  const maxDateStr = formatInTimeZone(threeDaysLater, TZ, 'yyyy-MM-dd');
+
+  const { data: sessions } = await adminClient
+    .from('sabha_sessions')
+    .select('id')
+    .eq('status', 'scheduled')
+    .gte('session_date', todayStr)
+    .lte('session_date', maxDateStr);
+
+  if (!sessions || sessions.length === 0) {
+    return { created: 0 };
+  }
+
+  let totalCreated = 0;
+  for (const s of sessions) {
+    const res = await seedAttendanceRows(s.id);
+    totalCreated += res.created;
+  }
+
+  return { created: totalCreated };
 }
 
 /** Task 1: Karyakram predicate */
