@@ -1,3 +1,9 @@
+import { Chandlo } from '@/components/ui/Chandlo';
+import { Row } from '@/components/ui/Row';
+import { Pill } from '@/components/ui/Pill';
+import { Stat, StatGroup } from '@/components/ui/Stat';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+
 export default function DesignCheckPage() {
   const colorTokens = [
     { name: "paper", var: "var(--paper)" },
@@ -18,93 +24,102 @@ export default function DesignCheckPage() {
   ];
 
   return (
-    <main
-      style={{
-        maxWidth: 720,
-        margin: "0 auto",
-        padding: "40px 24px",
-      }}
-    >
-      <h1 style={{ fontFamily: "var(--font-display-face)", fontSize: 32, lineHeight: 1.6 }}>
-        બાળ સભા
-      </h1>
+    <main className="max-w-[720px] mx-auto px-6 py-10 space-y-10">
+      {/* Typography & Font Check */}
+      <section className="space-y-3">
+        <SectionHeader>મુખ્ય લખાણ અને અંકો</SectionHeader>
+        <h1 className="font-display text-[32px] text-ink leading-relaxed">
+          બાળ સભા
+        </h1>
+        <p className="font-ui text-[16px] text-ink leading-relaxed">
+          હાજરી પત્રક
+        </p>
+        <p className="font-ui text-[16px] text-ink leading-relaxed">
+          શ્રી ત્રિ કિ ર્ય ક્ષ જ્ઞ
+        </p>
+        <p className="font-ui text-[16px] text-ink leading-relaxed">
+          ૦૧૨૩૪૫૬૭૮૯
+        </p>
+        <p className="font-data text-[16px] text-ink leading-relaxed [font-variant-numeric:tabular-nums]">
+          1234567890
+        </p>
+      </section>
 
-      <p style={{ fontFamily: "var(--font-ui-face), sans-serif", fontSize: 16, lineHeight: 1.6 }}>
-        હાજરી પત્રક
-      </p>
-
-      <p
-        style={{
-          fontFamily: "var(--font-ui-face), sans-serif",
-          fontSize: 16,
-          lineHeight: 1.6,
-          marginTop: 12,
-        }}
-      >
-        શ્રી ત્રિ કિ ર્ય ક્ષ જ્ઞ
-      </p>
-
-      <p style={{ fontFamily: "var(--font-ui-face), sans-serif", fontSize: 16, lineHeight: 1.6, marginTop: 12 }}>
-        ૦૧૨૩૪૫૬૭૮૯
-      </p>
-
-      <p
-        style={{
-          fontFamily: "var(--font-data-face), monospace",
-          fontSize: 16,
-          fontVariantNumeric: "tabular-nums",
-          lineHeight: 1.6,
-          marginTop: 12,
-        }}
-      >
-        1234567890
-      </p>
-
-      <h2
-        style={{
-          fontFamily: "var(--font-ui-face), sans-serif",
-          fontSize: 20,
-          fontWeight: 600,
-          marginTop: 40,
-          marginBottom: 16,
-          lineHeight: 1.6,
-        }}
-      >
-        Colour Tokens
-      </h2>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-          gap: 16,
-        }}
-      >
-        {colorTokens.map((token) => (
-          <div key={token.name} style={{ textAlign: "center" }}>
-            <div
-              style={{
-                width: 64,
-                height: 64,
-                backgroundColor: token.var,
-                borderRadius: "var(--r-sm)",
-                border: "1px solid var(--rule)",
-                margin: "0 auto 8px",
-              }}
-            />
-            <span
-              style={{
-                fontFamily: "var(--font-data-face), monospace",
-                fontSize: 11,
-                color: "var(--ink-soft)",
-                lineHeight: 1.6,
-              }}
-            >
-              {token.name}
-            </span>
+      {/* Primitive 1: Chandlo (Three states) */}
+      <section className="space-y-3">
+        <SectionHeader>ચાંદલો સ્ટેટ (Chandlo States)</SectionHeader>
+        <div className="flex items-center gap-4 bg-sheet p-4 border border-rule rounded-md">
+          <div className="flex items-center gap-2">
+            <Chandlo state="done" label="Done state" />
+            <span className="text-[14px] text-ink-soft">Done</span>
           </div>
-        ))}
-      </div>
+          <div className="flex items-center gap-2">
+            <Chandlo state="not-done" label="Not done state" />
+            <span className="text-[14px] text-ink-soft">Not Done</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Chandlo state="pending" label="Pending state" />
+            <span className="text-[14px] text-ink-soft">Pending</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Primitive 2: Row (Normal & Active) */}
+      <section className="space-y-3">
+        <SectionHeader>યાદી હરોળ (Row Variants)</SectionHeader>
+        <div className="border border-rule rounded-md overflow-hidden bg-sheet">
+          <Row
+            left={<Chandlo state="done" label="Attendance marked" />}
+            title="હર્ષદ પટેલ"
+            subtitle="ધોરણ ૫ • પાલડી સભા"
+            right={<span className="font-data text-[14px] text-ink-soft">૧૫/૨૦</span>}
+          />
+          <Row
+            active={true}
+            left={<Chandlo state="pending" label="Followup pending" />}
+            title="જય શાહ (સક્રિય વિગત)"
+            subtitle="આજના કામ માટે સંપર્ક બાકી છે"
+            right={<span className="font-data text-[14px] text-kumkum font-semibold">બાકી</span>}
+          />
+        </div>
+      </section>
+
+      {/* Primitive 3: Pill (Default & Selected) */}
+      <section className="space-y-3">
+        <SectionHeader>પિલ વેરિઅન્ટ (Pill Variants)</SectionHeader>
+        <div className="flex items-center gap-3">
+          <Pill label="સામાન્ય નિયમ" selected={false} />
+          <Pill label="પસંદ કરેલ નિયમ" selected={true} />
+        </div>
+      </section>
+
+      {/* Primitive 4: Stats in a row */}
+      <section className="space-y-3">
+        <SectionHeader>આંકડા દર્શક (Stats in a row)</SectionHeader>
+        <StatGroup className="bg-sheet rounded-md">
+          <Stat value="૮૫" label="કુલ બાળકો" className="flex-1" />
+          <Stat value="૯૨%" label="હાજરી ટકાવારી" className="flex-1" />
+          <Stat value="૩" label="બાકી કામ" className="flex-1" />
+        </StatGroup>
+      </section>
+
+      {/* Colour Tokens */}
+      <section className="space-y-3">
+        <SectionHeader>કલર ટોકન્સ (Colour Tokens)</SectionHeader>
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4">
+          {colorTokens.map((token) => (
+            <div key={token.name} className="text-center">
+              <div
+                className="w-16 h-16 rounded-sm border border-rule mx-auto mb-2"
+                style={{ backgroundColor: token.var }}
+              />
+              <span className="font-data text-[11px] text-ink-soft block">
+                {token.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

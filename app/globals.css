@@ -76,3 +76,18 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+.chandlo {
+  border-radius: 50%;
+  border: 1.5px solid var(--slate);
+  background: transparent;
+  transition: background 180ms cubic-bezier(.34,1.4,.64,1), border-color 180ms;
+}
+.chandlo[data-state="done"] {
+  background: var(--kumkum);
+  border-color: var(--kumkum);
+}
+.chandlo[data-state="pending"] {
+  border-style: dashed;
+  border-color: var(--ink-faint);
+}
