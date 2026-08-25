@@ -1,0 +1,391 @@
+# 05 — ગુજરાતી Copy Deck
+
+Every string in the app lives here. Antigravity must import from `lib/i18n/gu.ts` and never inline a Gujarati string in a component. When you add a screen, add its strings here first.
+
+## Rules
+
+1. **Sentence case, no shouting.** No ALL CAPS in Gujarati, it does not exist as a device.
+2. **Buttons name the outcome.** `હાજરી સાચવો`, not `સબમિટ`. The confirmation toast repeats the same verb: `હાજરી સાચવાઈ`.
+3. **Errors say what happened and what to do.** No apologies, no vagueness.
+4. **Empty states invite an action.** Never `કોઈ ડેટા નથી` alone.
+5. **Gujarati numerals (૦-૯) in display.** Latin numerals in Excel exports and in `tel:` links.
+6. **Do not transliterate English UI words.** `સાચવો` not `સેવ`. Exception: `લોગિન`, `પાસવર્ડ`, `એપ`, `ફોટો`, `મોબાઈલ` are established loanwords.
+
+## Structure
+
+```ts
+// lib/i18n/gu.ts
+export const gu = {
+  app: { ... }, nav: { ... }, auth: { ... },
+  balak: { ... }, sabha: { ... }, attendance: { ... },
+  ahnik: { ... }, niyam: { ... }, task: { ... },
+  export: { ... }, common: { ... }, errors: { ... }, empty: { ... }
+} as const;
+export type Copy = typeof gu;
+```
+
+---
+
+## app
+
+| key | ગુજરાતી | English |
+|---|---|---|
+| `name` | બાળ સભા | Bal Sabha |
+| `nameFull` | બાળ સભા સંચાલન | Bal Sabha Management |
+| `vistar` | પાલડી વિસ્તાર | Paldi Vistar |
+
+## nav (bottom tab bar, 5 items)
+
+| key | ગુજરાતી |
+|---|---|
+| `home` | મુખ્ય |
+| `tasks` | કામ |
+| `balako` | બાળકો |
+| `sabha` | સભા |
+| `more` | વધુ |
+
+## auth
+
+| key | ગુજરાતી |
+|---|---|
+| `loginTitle` | લોગિન કરો |
+| `username` | વપરાશકર્તા નામ |
+| `password` | પાસવર્ડ |
+| `loginBtn` | લોગિન કરો |
+| `logout` | લોગ આઉટ |
+| `changePassword` | પાસવર્ડ બદલો |
+| `newPassword` | નવો પાસવર્ડ |
+| `confirmPassword` | નવો પાસવર્ડ ફરીથી લખો |
+| `mustChangeTitle` | પહેલા પાસવર્ડ બદલો |
+| `mustChangeBody` | સુરક્ષા માટે તમારો કામચલાઉ પાસવર્ડ બદલવો જરૂરી છે. |
+| `passwordChanged` | પાસવર્ડ બદલાઈ ગયો |
+| `wrongCredentials` | વપરાશકર્તા નામ કે પાસવર્ડ ખોટો છે. ફરી પ્રયત્ન કરો. |
+| `accountInactive` | આ ખાતું બંધ કરેલું છે. સંચાલકનો સંપર્ક કરો. |
+
+## balak
+
+| key | ગુજરાતી |
+|---|---|
+| `title` | બાળકો |
+| `add` | નવો બાળક ઉમેરો |
+| `edit` | બાળકની વિગત બદલો |
+| `profile` | બાળકની પ્રોફાઇલ |
+| `search` | નામ કે મોબાઈલ નંબરથી શોધો |
+| `nameGu` | પૂરું નામ (ગુજરાતી) |
+| `nameEn` | પૂરું નામ (અંગ્રેજી) |
+| `photo` | ફોટો |
+| `photoAdd` | ફોટો ઉમેરો |
+| `photoChange` | ફોટો બદલો |
+| `dob` | જન્મ તારીખ |
+| `standard` | ધોરણ |
+| `medium` | માધ્યમ |
+| `school` | શાળાનું નામ |
+| `address` | સરનામું |
+| `satsangStatus` | સત્સંગ સ્થિતિ |
+| `motherName` | માતાનું નામ |
+| `motherMobile` | માતાનો મોબાઈલ નંબર |
+| `fatherName` | પિતાનું નામ |
+| `fatherMobile` | પિતાનો મોબાઈલ નંબર |
+| `sabhas` | કઈ સભામાં આવે છે |
+| `primarySabha` | મુખ્ય સભા |
+| `saveBtn` | બાળક સાચવો |
+| `saved` | બાળક સાચવાયો |
+| `incompleteProfile` | અધૂરી પ્રોફાઇલ |
+| `photoPending` | ફોટો બાકી છે |
+| `photoOverdue` | ફોટો ૧૦ દિવસથી બાકી છે |
+| `archive` | બાળકને આર્કાઇવ કરો |
+| `archiveReason` | આર્કાઇવ કરવાનું કારણ |
+| `archiveConfirm` | આ બાળકને આર્કાઇવ કરવો છે? જૂની હાજરી અને આહ્નિકની નોંધ રહેશે. |
+| `archived` | આર્કાઇવ કરેલ |
+| `transferKishore` | કિશોર મંડળમાં મોકલો |
+| `attendanceHistory` | હાજરીનો ઇતિહાસ |
+| `ahnikHistory` | આહ્નિકનો ઇતિહાસ |
+
+### satsang status values
+
+| value | ગુજરાતી |
+|---|---|
+| `satsangi` | સત્સંગી |
+| `binsatsangi` | બિનસત્સંગી |
+| `gunbhavi` | ગુણભાવી |
+
+### medium values
+
+| value | ગુજરાતી |
+|---|---|
+| `gujarati` | ગુજરાતી |
+| `english` | અંગ્રેજી |
+| `hindi` | હિન્દી |
+| `other` | અન્ય |
+
+## sabha
+
+| key | ગુજરાતી |
+|---|---|
+| `title` | સભા |
+| `upcoming` | આવનારી સભા |
+| `past` | થઈ ગયેલી સભા |
+| `today` | આજની સભા |
+| `date` | તારીખ |
+| `time` | સમય |
+| `weekday` | વાર |
+| `type` | સભાનો પ્રકાર |
+| `typePakki` | પાકી સભા |
+| `typeKachi` | કાચી સભા |
+| `sankhya` | બાળકોની સંખ્યા |
+| `editSession` | આ સભાની તારીખ/સમય બદલો |
+| `cancelSession` | આ અઠવાડિયે સભા નથી |
+| `cancelReason` | સભા ન થવાનું કારણ |
+| `cancelConfirm` | આ સભા રદ કરવી છે? બધા બાકી કામ બંધ થઈ જશે અને કોઈ સૂચના નહીં જાય. |
+| `cancelled` | સભા રદ કરેલી છે |
+| `cancelledBy` | રદ કરનાર |
+| `noPermissionCancel` | સભા રદ કરવાની પરવાનગી માત્ર નિરીક્ષક પાસે છે. |
+| `karyakram` | કાર્યક્રમ |
+| `karyakramPlaceholder` | કયા કાર્યકરે શું કરાવ્યું અને કેટલો સમય, તે અહીં લખો. |
+| `karyakramSave` | કાર્યક્રમ સાચવો |
+| `karyakramSaved` | કાર્યક્રમ સાચવાયો |
+| `notes` | નોંધ |
+| `notesPlaceholder` | મહેમાન સંત, ખાસ પ્રસંગ, બીજી કોઈ નોંધ. |
+| `aheval` | અહેવાલ |
+| `ahevalCheck` | અહેવાલ ભરાઈ ગયો છે |
+| `ahevalDoneBy` | અહેવાલ ભરનાર |
+
+## attendance
+
+| key | ગુજરાતી |
+|---|---|
+| `title` | હાજરી |
+| `sheet` | હાજરી પત્રક |
+| `present` | હાજર |
+| `absent` | ગેરહાજર |
+| `notMarked` | નોંધાયું નથી |
+| `markAll` | બધાને હાજર કરો |
+| `save` | હાજરી સાચવો |
+| `saved` | હાજરી સાચવાઈ |
+| `markedBy` | હાજરી લેનાર |
+| `editedBy` | છેલ્લે બદલનાર |
+| `totalPresent` | કુલ હાજર |
+| `totalAbsent` | કુલ ગેરહાજર |
+| `rate` | હાજરી ટકાવારી |
+| **pre-sabha follow-up** | |
+| `presabhaTitle` | સભા પૂર્વે સંપર્ક |
+| `presabhaSub` | સભા પહેલાં દરેક બાળકના ઘરે ફોન કરીને પૂછો કે બાળક સભામાં આવશે કે નહીં. |
+| `callMother` | માતા |
+| `callFather` | પિતા |
+| `willCome` | આવશે |
+| `wontCome` | નહીં આવે |
+| `noResponse` | જવાબ નથી મળ્યો |
+| `pending` | બાકી |
+| `presabhaDone` | સંપર્ક પૂરો થયો |
+| `presabhaRemaining` | {n} બાળકનો સંપર્ક બાકી |
+| `whoDidFollowup` | સંપર્ક કોણે કર્યો |
+| `whoDidFollowupHint` | એક કરતાં વધુ કાર્યકર પસંદ કરી શકાય. |
+
+## ahnik
+
+| key | ગુજરાતી |
+|---|---|
+| `title` | આહ્નિક |
+| `followupTitle` | આહ્નિક ફોલો-અપ |
+| `followupSub` | સભામાં દરેક બાળકને પૂછીને આ અઠવાડિયાનું આહ્નિક નોંધો. |
+| `week` | અઠવાડિયું |
+| `thisWeek` | આ અઠવાડિયું |
+| `alreadyRecorded` | આ અઠવાડિયે નોંધાયેલ છે |
+| `alreadyRecordedLink` | જુઓ કે બદલો |
+| `save` | આહ્નિક સાચવો |
+| `saved` | આહ્નિક સાચવાયું |
+| `recordedBy` | નોંધનાર |
+| `notApplicable` | કાચી સભામાં આહ્નિક ફોલો-અપ નથી |
+| `remaining` | {n} બાળકનું આહ્નિક બાકી |
+| **items** | |
+| `pooja` | પૂજા |
+| `tilak_chandlo` | તિલક-ચાંદલો |
+| `mansi` | માનસી પૂજા |
+| `aarti` | આરતી |
+| `vachanamrut_swamini_vato` | વચનામૃત / સ્વામીની વાતો વાંચન |
+| `gharsabha` | ઘરસભા |
+| `ravi_sabha` | રવિ સભા |
+
+## niyam
+
+| key | ગુજરાતી |
+|---|---|
+| `title` | વિશેષ નિયમ |
+| `add` | નવો નિયમ ઉમેરો |
+| `titleField` | નિયમ શું છે |
+| `titlePlaceholder` | દા.ત. ટીવી નહીં જોવાનો નિયમ, બહારનું ખાવાનું નહીં |
+| `startDate` | નિયમ શરૂ થયાની તારીખ |
+| `duration` | કેટલા મહિના માટે |
+| `months` | મહિના |
+| `endDate` | પૂરો થવાની તારીખ |
+| `notes` | નોંધ |
+| `save` | નિયમ સાચવો |
+| `saved` | નિયમ સાચવાયો |
+| `statusActive` | ચાલુ |
+| `statusExpired` | મુદત પૂરી |
+| `statusCompleted` | પૂરો કર્યો |
+| `statusLapsed` | અધૂરો રહ્યો |
+| `expiredNotifTitle` | નિયમની મુદત પૂરી થઈ |
+| `expiredNotifBody` | {name}નો "{niyam}" નિયમ પૂરો થયો. નવો નિયમ લેવો છે? |
+| `markCompleted` | પૂરો કર્યો એમ નોંધો |
+| `markLapsed` | અધૂરો રહ્યો એમ નોંધો |
+
+## task
+
+| key | ગુજરાતી |
+|---|---|
+| `title` | બાકી કામ |
+| `none` | અત્યારે કોઈ કામ બાકી નથી. |
+| `overdue` | મુદત વીતી ગઈ |
+| `dueToday` | આજે પૂરું કરવાનું |
+| `dueIn` | {n} દિવસ બાકી |
+| `prepare_karyakram` | કાર્યક્રમ તૈયાર કરો |
+| `presabha_followup` | સભા પૂર્વે સંપર્ક કરો |
+| `mark_attendance` | હાજરી નોંધો |
+| `ahnik_followup` | આહ્નિક ફોલો-અપ કરો |
+| `aheval` | અહેવાલ ભરો |
+| `completedBy` | પૂરું કરનાર |
+| `escalationTitle` | બાકી કામ ધ્યાન માંગે છે |
+| `escalationBody` | {sabha}નું "{task}" મુદત વીત્યા પછી પણ બાકી છે. |
+
+## dashboard
+
+| key | ગુજરાતી |
+|---|---|
+| `title` | મુખ્ય |
+| `vistarTitle` | વિસ્તારનો અહેવાલ |
+| `totalBalako` | કુલ બાળકો |
+| `attendanceRate` | હાજરી ટકાવારી |
+| `accountability` | કાર્યકર જવાબદારી |
+| `consecutiveAbsent` | સતત ગેરહાજર બાળકો |
+| `consecutiveAbsentSub` | છેલ્લી ૩ સભામાં એક પણ વાર ન આવ્યા હોય. ફોન કરવો જરૂરી. |
+| `pendingTasks` | બાકી કામ |
+| `incompleteProfiles` | અધૂરી પ્રોફાઇલ |
+| `period` | સમયગાળો |
+| `thisMonth` | આ મહિનો |
+| `lastMonth` | ગયો મહિનો |
+| `last3Months` | છેલ્લા ૩ મહિના |
+| `custom` | પસંદ કરેલો સમયગાળો |
+
+## export
+
+| key | ગુજરાતી |
+|---|---|
+| `title` | નિકાસ |
+| `excel` | એક્સેલમાં ઉતારો |
+| `pdf` | PDF બનાવો |
+| `pdfHint` | PDF બનાવવા માટે છપાઈની વિન્ડોમાં "Save as PDF" પસંદ કરો. |
+| `dateLanguage` | તારીખની ભાષા |
+| `dateGu` | ગુજરાતી |
+| `dateEn` | અંગ્રેજી |
+| `pickReport` | કયો અહેવાલ જોઈએ છે |
+| `rBalakRegister` | બાળક નોંધપોથી |
+| `rAttendance` | હાજરી પત્રક |
+| `rAhnik` | આહ્નિક નોંધ |
+| `rNiyam` | નિયમ નોંધ |
+| `rKaryakar` | કાર્યકર જવાબદારી |
+| `generating` | તૈયાર થાય છે... |
+| `generatedOn` | તારીખ |
+| `generatedBy` | તૈયાર કરનાર |
+
+## common
+
+| key | ગુજરાતી |
+|---|---|
+| `save` | સાચવો |
+| `cancel` | રદ કરો |
+| `edit` | બદલો |
+| `delete` | કાઢી નાખો |
+| `back` | પાછળ |
+| `next` | આગળ |
+| `done` | પૂરું |
+| `confirm` | હા, ચોક્કસ |
+| `yes` | હા |
+| `no` | ના |
+| `all` | બધા |
+| `search` | શોધો |
+| `filter` | ગાળો |
+| `loading` | લોડ થાય છે... |
+| `saving` | સાચવાય છે... |
+| `retry` | ફરી પ્રયત્ન કરો |
+| `required` | જરૂરી |
+| `optional` | મરજિયાત |
+| `selectOne` | એક પસંદ કરો |
+| `karyakar` | કાર્યકર |
+| `karyakars` | કાર્યકરો |
+| `role` | હોદ્દો |
+| `lastUpdated` | છેલ્લે બદલાયું |
+| `by` | દ્વારા |
+
+### roles
+
+| value | ગુજરાતી |
+|---|---|
+| `super_admin` | સુપર એડમિન |
+| `agresar` | અગ્રેસર |
+| `nirikshak` | નિરીક્ષક |
+| `sanchalak` | સંચાલક |
+| `sah_sanchalak` | સહ સંચાલક |
+
+### weekdays (index 0 = Sunday, matches JS getDay)
+
+`['રવિવાર','સોમવાર','મંગળવાર','બુધવાર','ગુરુવાર','શુક્રવાર','શનિવાર']`
+
+Short form: `['રવિ','સોમ','મંગળ','બુધ','ગુરુ','શુક્ર','શનિ']`
+
+### months
+
+`['જાન્યુઆરી','ફેબ્રુઆરી','માર્ચ','એપ્રિલ','મે','જૂન','જુલાઈ','ઓગસ્ટ','સપ્ટેમ્બર','ઓક્ટોબર','નવેમ્બર','ડિસેમ્બર']`
+
+### numerals
+
+```ts
+const GU_DIGITS = ['૦','૧','૨','૩','૪','૫','૬','૭','૮','૯'];
+export const toGu = (n: number | string) =>
+  String(n).replace(/[0-9]/g, d => GU_DIGITS[+d]);
+```
+
+Apply `toGu()` to every number rendered on screen. **Never** apply it to `tel:` hrefs, form input values, Excel cell values, or anything that will be parsed.
+
+### time formatting
+
+`૯:૦૦ થી ૧૦:૩૦ રાત્રે` / `૭:૦૦ થી ૮:૦૦ સાંજે`
+
+Period words: `સવારે` (before 12), `બપોરે` (12 to 16), `સાંજે` (16 to 19), `રાત્રે` (19 onwards).
+
+## errors
+
+| key | ગુજરાતી |
+|---|---|
+| `network` | ઇન્ટરનેટ મળતું નથી. કનેક્શન તપાસીને ફરી પ્રયત્ન કરો. |
+| `saveFailed` | સાચવી શકાયું નહીં. ફરી પ્રયત્ન કરો. |
+| `noPermission` | આ કામ કરવાની તમને પરવાનગી નથી. |
+| `notFound` | આ પાનું મળતું નથી. |
+| `required` | આ વિગત જરૂરી છે. |
+| `invalidMobile` | મોબાઈલ નંબર ૧૦ આંકડાનો હોવો જોઈએ. |
+| `invalidDate` | તારીખ બરાબર નથી. |
+| `photoTooLarge` | ફોટો બહુ મોટો છે. બીજો ફોટો પસંદ કરો. |
+| `duplicateBalak` | આ નામ અને મોબાઈલ નંબરવાળો બાળક પહેલેથી નોંધાયેલ છે. |
+| `sessionCancelled` | આ સભા રદ થયેલી છે, તેમાં ફેરફાર થઈ શકે નહીં. |
+| `ahnikDuplicate` | આ બાળકનું આ અઠવાડિયાનું આહ્નિક બીજી સભામાં નોંધાઈ ગયું છે. |
+
+## empty states
+
+Each empty state has a line of direction and a button. Never a bare "no data".
+
+| screen | ગુજરાતી | button |
+|---|---|---|
+| `tasks` | અત્યારે કોઈ કામ બાકી નથી. આવનારી સભા બે દિવસ પહેલાં અહીં દેખાશે. | આવનારી સભા જુઓ |
+| `balako` | હજી કોઈ બાળક નોંધાયો નથી. | નવો બાળક ઉમેરો |
+| `search` | "{q}" માટે કોઈ બાળક મળ્યો નહીં. અંગ્રેજીમાં નામ લખીને પણ શોધી શકાય. | — |
+| `attendance` | આ સભા માટે હજી કોઈ બાળક નોંધાયેલ નથી. | બાળક ઉમેરો |
+| `ahnikHistory` | આ બાળકનું આહ્નિક હજી નોંધાયું નથી. | — |
+| `niyam` | આ બાળકે હજી કોઈ વિશેષ નિયમ લીધો નથી. | નવો નિયમ ઉમેરો |
+| `pastSabha` | હજી કોઈ સભા થઈ નથી. | — |
+| `notifications` | કોઈ નવી સૂચના નથી. | — |
+
+## Bilingual toggle
+
+Gujarati is the default and always ships complete. English is a secondary file `lib/i18n/en.ts` with the same shape, resolved through the same `t()` helper. If an English key is missing, fall back to Gujarati rather than to the key name.
+
+Toggle lives in `વધુ > ભાષા`, stored in `localStorage`, defaulting to `gu`. Build the English file last, in Phase 8. Do not let a missing English string block a Gujarati screen.

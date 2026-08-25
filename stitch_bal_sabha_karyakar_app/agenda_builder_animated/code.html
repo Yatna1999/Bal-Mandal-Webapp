@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="gu"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>કાર્યક્રમ આયોજક - Bal Sabha</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Shrikhand&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#264191",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#6b2d00",
+                      "surface-container": "#ededf4",
+                      "surface-bright": "#f9f9ff",
+                      "tertiary-container": "#903f00",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "outline-variant": "#e1bebd",
+                      "on-error-container": "#93000a",
+                      "surface": "#f9f9ff",
+                      "surface-dim": "#d9d9e0",
+                      "background": "#f9f9ff",
+                      "secondary": "#4059aa",
+                      "secondary-container": "#8fa7fe",
+                      "surface-container-highest": "#e2e2e9",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#ffdbca",
+                      "on-primary-fixed": "#410008",
+                      "inverse-surface": "#2e3036",
+                      "error": "#ba1a1a",
+                      "on-surface-variant": "#594140",
+                      "primary": "#85001b",
+                      "tertiary-fixed-dim": "#ffb68e",
+                      "inverse-on-surface": "#f0f0f7",
+                      "surface-container-high": "#e8e7ef",
+                      "surface-variant": "#e2e2e9",
+                      "on-primary-fixed-variant": "#910720",
+                      "on-secondary-container": "#1d3989",
+                      "outline": "#8d706f",
+                      "primary-container": "#a81e2e",
+                      "secondary-fixed-dim": "#b6c4ff",
+                      "surface-container-low": "#f3f3fa",
+                      "surface-tint": "#b32735",
+                      "primary-fixed-dim": "#ffb3b2",
+                      "on-error": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#ffdad9",
+                      "on-secondary-fixed": "#00164e",
+                      "secondary-fixed": "#dce1ff",
+                      "inverse-primary": "#ffb3b2",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#1a1b21",
+                      "on-tertiary-fixed": "#331200",
+                      "on-background": "#1a1b21",
+                      "on-primary-container": "#ffbcbb",
+                      "on-tertiary-container": "#ffbf9d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "hairline": "1px",
+                      "margin-edge": "16px",
+                      "gutter": "12px",
+                      "row-height-standard": "56px",
+                      "row-height-compact": "48px"
+              },
+              "fontFamily": {
+                      "body-gu-lg": [
+                              "Hind Vadodara"
+                      ],
+                      "body-gu-md": [
+                              "Hind Vadodara"
+                      ],
+                      "data-num-sm": [
+                              "IBM Plex Mono"
+                      ],
+                      "header-section": [
+                              "IBM Plex Sans"
+                      ],
+                      "label-secondary": [
+                              "Hind Vadodara"
+                      ],
+                      "data-num-lg": [
+                              "IBM Plex Mono"
+                      ],
+                      "wordmark": [
+                              "Shrikhand"
+                      ]
+              },
+              "fontSize": {
+                      "body-gu-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-gu-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-num-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "header-section": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-secondary": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-num-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "wordmark": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              },
+              "animation": {
+                "fade-in-up": "fadeInUp 0.5s ease-out forwards",
+                "slide-in-right": "slideInRight 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards",
+                "pop": "pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards"
+              },
+              "keyframes": {
+                fadeInUp: {
+                  "0%": { opacity: "0", transform: "translateY(10px)" },
+                  "100%": { opacity: "1", transform: "translateY(0)" }
+                },
+                slideInRight: {
+                  "0%": { transform: "translateX(20px)", opacity: "0" },
+                  "100%": { transform: "translateX(0)", opacity: "1" }
+                },
+                pop: {
+                  "0%": { transform: "scale(0.8)", opacity: "0" },
+                  "100%": { transform: "scale(1)", opacity: "1" }
+                }
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #FDFCF9;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    
+    .stagger-1 { animation-delay: 50ms; opacity: 0; }
+    .stagger-2 { animation-delay: 100ms; opacity: 0; }
+    .stagger-3 { animation-delay: 150ms; opacity: 0; }
+    .stagger-4 { animation-delay: 200ms; opacity: 0; }
+    .stagger-5 { animation-delay: 250ms; opacity: 0; }
+  </style>
+</head>
+<body class="font-body-gu-md text-on-surface antialiased bg-[#FDFCF9] min-h-screen flex flex-col relative pb-[56px] md:pb-0 md:pl-[280px]">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col h-full w-[280px] border-r border-outline-variant py-margin-edge bg-surface fixed top-0 left-0 z-40 transition-all duration-200">
+<div class="px-margin-edge mb-8 animate-fade-in-up stagger-1">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-xl animate-pop">
+                    ક
+                </div>
+<div>
+<h2 class="font-body-gu-lg text-body-gu-lg text-on-surface">કાર્યકર્તા</h2>
+<p class="font-label-secondary text-label-secondary text-on-surface-variant">યુવા સભા સંચાલક</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-2 px-margin-edge flex-1 animate-fade-in-up stagger-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-gu-md text-body-gu-md">ડેશબોર્ડ</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary-container font-bold transition-colors active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-body-gu-md text-body-gu-md">કાર્યક્રમ ડ્રાફ્ટ્સ</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_ind">assignment_ind</span>
+<span class="font-body-gu-md text-body-gu-md">હાજરી</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-gu-md text-body-gu-md">રીપોર્ટ્સ</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-gu-md text-body-gu-md">મદદ</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- TopAppBar -->
+<header class="bg-surface flex justify-between items-center h-[56px] px-margin-edge w-full border-b border-outline-variant sticky top-0 z-30 transition-colors duration-150 ease-in-out">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 -ml-2 rounded-full transition-colors flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-header-section text-header-section text-primary uppercase tracking-widest font-bold">કાર્યક્રમ આયોજક</h1>
+<span class="font-label-secondary text-label-secondary text-on-surface-variant">પાલડી બાળ સભા • ૨૭ ઓગસ્ટ</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 -mr-2 rounded-full transition-colors flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-2xl mx-auto px-margin-edge py-6 animate-slide-in-right opacity-0" style="animation-delay: 50ms;">
+<div class="space-y-3" id="agenda-list">
+<!-- Agenda Item 1 -->
+<div class="bg-white rounded-[6px] border border-[#DDD8CE] shadow-[0_1px_2px_rgba(0,0,0,0.05)] p-4 flex items-center gap-4 cursor-grab active:cursor-grabbing hover:bg-surface-bright transition-all duration-200 active:scale-[0.98] animate-fade-in-up stagger-1" draggable="true">
+<div class="text-[#94A3B8] flex items-center justify-center">
+<span class="material-symbols-outlined cursor-grab" data-icon="drag_indicator">drag_indicator</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-gu-md text-body-gu-md text-[#16181D]">ધૂન અને પ્રાર્થના</h3>
+</div>
+<div class="text-right">
+<span class="font-data-num-sm text-data-num-sm text-[#5A6069]">10 min</span>
+</div>
+</div>
+<!-- Agenda Item 2 -->
+<div class="bg-white rounded-[6px] border border-[#DDD8CE] shadow-[0_1px_2px_rgba(0,0,0,0.05)] p-4 flex items-center gap-4 cursor-grab active:cursor-grabbing hover:bg-surface-bright transition-all duration-200 active:scale-[0.98] animate-fade-in-up stagger-2" draggable="true">
+<div class="text-[#94A3B8] flex items-center justify-center">
+<span class="material-symbols-outlined cursor-grab" data-icon="drag_indicator">drag_indicator</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-gu-md text-body-gu-md text-[#16181D]">કથા અને વાર્તા</h3>
+</div>
+<div class="text-right">
+<span class="font-data-num-sm text-data-num-sm text-[#5A6069]">20 min</span>
+</div>
+</div>
+<!-- Agenda Item 3 -->
+<div class="bg-white rounded-[6px] border border-[#DDD8CE] shadow-[0_1px_2px_rgba(0,0,0,0.05)] p-4 flex items-center gap-4 cursor-grab active:cursor-grabbing hover:bg-surface-bright transition-all duration-200 active:scale-[0.98] animate-fade-in-up stagger-3" draggable="true">
+<div class="text-[#94A3B8] flex items-center justify-center">
+<span class="material-symbols-outlined cursor-grab" data-icon="drag_indicator">drag_indicator</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-gu-md text-body-gu-md text-[#16181D]">રમત અને પ્રવૃત્તિ</h3>
+</div>
+<div class="text-right">
+<span class="font-data-num-sm text-data-num-sm text-[#5A6069]">30 min</span>
+</div>
+</div>
+<!-- Agenda Item 4 -->
+<div class="bg-white rounded-[6px] border border-[#DDD8CE] shadow-[0_1px_2px_rgba(0,0,0,0.05)] p-4 flex items-center gap-4 cursor-grab active:cursor-grabbing hover:bg-surface-bright transition-all duration-200 active:scale-[0.98] animate-fade-in-up stagger-4" draggable="true">
+<div class="text-[#94A3B8] flex items-center justify-center">
+<span class="material-symbols-outlined cursor-grab" data-icon="drag_indicator">drag_indicator</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-gu-md text-body-gu-md text-[#16181D]">કીર્તન અને અષ્ટક</h3>
+</div>
+<div class="text-right">
+<span class="font-data-num-sm text-data-num-sm text-[#5A6069]">15 min</span>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t border-outline-variant pt-4 flex justify-between items-center text-on-surface-variant font-data-num-sm text-data-num-sm animate-fade-in-up stagger-5">
+<span>Total Duration:</span>
+<span class="font-bold text-on-surface">75 min</span>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-[80px] md:bottom-6 right-6 w-14 h-14 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 active:scale-90 z-40 animate-pop" style="animation-delay: 300ms; opacity: 0;">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden bg-surface-container-lowest fixed bottom-0 w-full h-[56px] z-50 border-t border-outline-variant flex justify-around items-center px-margin-edge">
+<a class="text-on-surface-variant flex flex-col items-center justify-center hover:bg-surface-container-highest active:scale-95 transition-transform flex-1 h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-secondary text-label-secondary text-[10px]">મુખ્ય</span>
+</a>
+<a class="text-primary font-bold flex flex-col items-center justify-center hover:bg-surface-container-highest active:scale-95 transition-transform flex-1 h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="event_note" data-weight="fill">event_note</span>
+<span class="font-label-secondary text-label-secondary text-[10px]">શેડ્યૂલ</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center justify-center hover:bg-surface-container-highest active:scale-95 transition-transform flex-1 h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="group">group</span>
+<span class="font-label-secondary text-label-secondary text-[10px]">સભ્યો</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center justify-center hover:bg-surface-container-highest active:scale-95 transition-transform flex-1 h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-secondary text-label-secondary text-[10px]">સેટિંગ્સ</span>
+</a>
+</nav>
+<script>
+        // Simple drag and drop visual feedback script (non-functional sorting for prototype)
+        const listItems = document.querySelectorAll('#agenda-list > div');
+        listItems.forEach(item => {
+            item.addEventListener('dragstart', () => {
+                item.classList.add('opacity-50');
+                item.classList.add('scale-95');
+            });
+            item.addEventListener('dragend', () => {
+                item.classList.remove('opacity-50');
+                item.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

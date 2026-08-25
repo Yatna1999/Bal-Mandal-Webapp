@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="gu"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>નિકાસ - Export App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Shrikhand&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "inverse-on-surface": "#f0f0f7",
+                        "primary-fixed": "#ffdad9",
+                        "on-secondary-fixed-variant": "#264191",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#903f00",
+                        "surface-container-highest": "#e2e2e9",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#ffb3b2",
+                        "surface-container-low": "#f3f3fa",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#ffbf9d",
+                        "on-surface": "#16181D", // Adjusted for prompt
+                        "secondary-fixed": "#dce1ff",
+                        "on-background": "#1a1b21",
+                        "on-secondary-container": "#1d3989",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#DDD8CE", // Adjusted for prompt
+                        "tertiary-fixed-dim": "#ffb68e",
+                        "on-tertiary-fixed": "#331200",
+                        "inverse-surface": "#2e3036",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "primary": "#A81E2E", // Adjusted for prompt
+                        "background": "#FDFCF9", // Adjusted for prompt
+                        "outline": "#8d706f",
+                        "on-surface-variant": "#5A6069", // Adjusted for prompt
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-container-high": "#e8e7ef",
+                        "primary-container": "#a81e2e",
+                        "on-primary-container": "#ffbcbb",
+                        "on-secondary-fixed": "#00164e",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb3b2",
+                        "error": "#ba1a1a",
+                        "tertiary": "#6b2d00",
+                        "on-primary-fixed": "#410008",
+                        "surface-tint": "#b32735",
+                        "surface": "#FFFFFF", // Adjusted for prompt
+                        "on-primary-fixed-variant": "#910720",
+                        "surface-variant": "#e2e2e9",
+                        "surface-dim": "#d9d9e0",
+                        "surface-container": "#ededf4",
+                        "secondary": "#4059aa",
+                        "tertiary-fixed": "#ffdbca",
+                        "secondary-container": "#8fa7fe",
+                        
+                        // Custom specific colors for prompt mapping
+                        "custom-label": "#949AA3",
+                        "custom-rule": "#B9B2A4",
+                        "custom-selected-bg": "#FBEEEF",
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.375rem", // Changed to 6px
+                        full: "0.75rem"
+                    },
+                    spacing: {
+                        "row-height-standard": "56px",
+                        "row-height-compact": "48px",
+                        "gutter": "12px",
+                        "hairline": "1px",
+                        "margin-edge": "16px"
+                    },
+                    fontFamily: {
+                        "label-secondary": ["Hind Vadodara"],
+                        "data-num-sm": ["IBM Plex Mono"],
+                        "body-gu-lg": ["Hind Vadodara"],
+                        "header-section": ["IBM Plex Sans"],
+                        "body-gu-md": ["Hind Vadodara"],
+                        "data-num-lg": ["IBM Plex Mono"],
+                        "wordmark": ["Shrikhand"]
+                    },
+                    fontSize: {
+                        "label-secondary": ["13px", { lineHeight: "18px", fontWeight: "400" }],
+                        "data-num-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "body-gu-lg": ["18px", { lineHeight: "28px", fontWeight: "500" }],
+                        "header-section": ["11px", { lineHeight: "16px", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "body-gu-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "data-num-lg": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+                        "wordmark": ["24px", { lineHeight: "32px", fontWeight: "400" }]
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.4s ease-out forwards',
+                        'pop': 'pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        pop: {
+                            '0%': { transform: 'scale(0.8)' },
+                            '50%': { transform: 'scale(1.1)' },
+                            '100%': { transform: 'scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Ledger Styles */
+        body { background-color: #FDFCF9; }
+        .ledger-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            height: 56px;
+            border-bottom: 1px solid #DDD8CE;
+            background-color: #FFFFFF;
+        }
+        .ledger-row-selected {
+            background-color: #FBEEEF;
+            border-left: 3px solid #A81E2E;
+            padding-left: 13px; /* Adjust for border */
+        }
+        .section-label {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: #949AA3;
+            text-transform: uppercase;
+            padding: 16px 16px 4px 16px;
+            border-bottom: 1px solid #B9B2A4;
+            margin-bottom: 8px;
+        }
+        .input-field-ledger {
+            border: none;
+            border-bottom: 1px solid #DDD8CE;
+            background: transparent;
+            border-radius: 0;
+            padding: 8px 0;
+            font-family: 'Hind Vadodara', sans-serif;
+            font-size: 16px;
+            color: #16181D;
+            width: 100%;
+        }
+        .input-field-ledger:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom-color: #A81E2E;
+        }
+        
+        .binary-circle-empty {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid #94A3B8;
+        }
+        .binary-circle-filled {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #A81E2E;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .animate-fade-in-up,
+            .animate-slide-in-right,
+            .animate-pop {
+                animation: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+            .transition-transform {
+                transition: none !important;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-gu-md text-on-surface antialiased max-w-[390px] mx-auto min-h-[844px] relative pb-row-height-standard overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center px-margin-edge h-row-height-standard border-b border-outline-variant bg-surface">
+<button class="mr-4 text-on-surface flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 400;">arrow_back</span>
+</button>
+<h1 class="font-body-gu-lg flex-1">નિકાસ</h1>
+</header>
+<!-- Main Canvas -->
+<main class="pb-24 animate-slide-in-right">
+<!-- Section: Which Report -->
+<section class="mt-2">
+<div class="section-label animate-fade-in-up opacity-0" style="animation-delay: 50ms;">કયો અહેવાલ જોઈએ છે</div>
+<div class="ledger-row cursor-pointer active:scale-95 transition-transform animate-fade-in-up opacity-0" style="animation-delay: 100ms;">
+<span class="font-body-gu-md">બાળક નોંધપોથી</span>
+<div class="binary-circle-empty animate-pop"></div>
+</div>
+<div class="ledger-row ledger-row-selected cursor-pointer active:scale-95 transition-transform animate-fade-in-up opacity-0" style="animation-delay: 150ms;">
+<span class="font-body-gu-md text-primary font-medium">હાજરી પત્રક</span>
+<div class="binary-circle-filled animate-pop"></div>
+</div>
+<div class="ledger-row cursor-pointer active:scale-95 transition-transform animate-fade-in-up opacity-0" style="animation-delay: 200ms;">
+<span class="font-body-gu-md">આહ્નિક નોંધ</span>
+<div class="binary-circle-empty animate-pop"></div>
+</div>
+<div class="ledger-row cursor-pointer active:scale-95 transition-transform animate-fade-in-up opacity-0" style="animation-delay: 250ms;">
+<span class="font-body-gu-md">નિયમ નોંધ</span>
+<div class="binary-circle-empty animate-pop"></div>
+</div>
+<div class="ledger-row cursor-pointer active:scale-95 transition-transform animate-fade-in-up opacity-0" style="animation-delay: 300ms;">
+<span class="font-body-gu-md">કાર્યકર જવાબદારી</span>
+<div class="binary-circle-empty animate-pop"></div>
+</div>
+</section>
+<!-- Section: Sabha -->
+<section class="mt-4 px-margin-edge animate-fade-in-up opacity-0" style="animation-delay: 350ms;">
+<label class="block font-header-section text-custom-label mb-1">સભા</label>
+<div class="relative">
+<select class="input-field-ledger appearance-none pr-8 bg-surface cursor-pointer">
+<option>પાલડી બાળ સભા</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">arrow_drop_down</span>
+</div>
+</div>
+</section>
+<!-- Section: Time Period -->
+<section class="mt-4 px-margin-edge animate-fade-in-up opacity-0" style="animation-delay: 400ms;">
+<label class="block font-header-section text-custom-label mb-1">સમયગાળો</label>
+<div class="flex gap-4">
+<div class="flex-1 relative">
+<input class="input-field-ledger font-data-num-sm bg-surface cursor-pointer" readonly="" type="text" value="01-10-2023"/>
+<div class="absolute inset-y-0 right-0 flex items-center border-b border-outline-variant pb-[1px] pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">calendar_today</span>
+</div>
+</div>
+<div class="flex-1 relative">
+<input class="input-field-ledger font-data-num-sm bg-surface cursor-pointer" readonly="" type="text" value="31-10-2023"/>
+<div class="absolute inset-y-0 right-0 flex items-center border-b border-outline-variant pb-[1px] pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">calendar_today</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Date Language -->
+<section class="mt-6 px-margin-edge animate-fade-in-up opacity-0" style="animation-delay: 450ms;">
+<label class="block font-header-section text-custom-label mb-2">તારીખની ભાષા</label>
+<div class="flex rounded-xl overflow-hidden border border-primary w-full max-w-[240px]">
+<button class="flex-1 py-2 text-center font-body-gu-md bg-primary text-on-primary active:scale-95 transition-transform">ગુજરાતી</button>
+<button class="flex-1 py-2 text-center font-body-gu-md bg-surface text-on-surface-variant border-l border-primary active:scale-95 transition-transform">અંગ્રેજી</button>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="mt-8 px-margin-edge space-y-3 animate-fade-in-up opacity-0" style="animation-delay: 500ms;">
+<button class="w-full py-3 bg-primary text-on-primary font-body-gu-lg rounded-xl flex justify-center items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">table_view</span>
+                એક્સેલમાં ઉતારો
+            </button>
+<button class="w-full py-3 bg-transparent border border-primary text-primary font-body-gu-lg rounded-xl flex justify-center items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+                PDF બનાવો
+            </button>
+<p class="text-[12px] text-on-surface-variant text-center mt-2 px-4 leading-tight">
+                PDF બનાવવા માટે છપાઈની વિન્ડોમાં 'Save as PDF' પસંદ કરો.
+            </p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter bg-surface border-t border-outline-variant h-row-height-standard">
+<a class="flex flex-col items-center justify-center text-outline w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-secondary text-label-secondary mt-1">મુખ્ય</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-secondary text-label-secondary mt-1">કામ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-secondary text-label-secondary mt-1">બાળકો</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-secondary text-label-secondary mt-1">સભા</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu</span>
+<span class="font-label-secondary text-label-secondary mt-1">વધુ</span>
+</a>
+</nav>
+</body></html>

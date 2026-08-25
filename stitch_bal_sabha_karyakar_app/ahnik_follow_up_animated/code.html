@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html lang="gu"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>આહ્નિક ફોલો-અપ - Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Shrikhand&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#8fa7fe",
+                        "primary-fixed-dim": "#ffb3b2",
+                        "surface-container": "#ededf4",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9ff",
+                        "inverse-on-surface": "#f0f0f7",
+                        "on-secondary-container": "#1d3989",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#00164e",
+                        "tertiary-fixed": "#ffdbca",
+                        "secondary": "#4059aa",
+                        "primary": "#85001b",
+                        "surface-dim": "#d9d9e0",
+                        "tertiary-fixed-dim": "#ffb68e",
+                        "secondary-fixed": "#dce1ff",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2e3036",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#264191",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "on-tertiary-fixed": "#331200",
+                        "on-primary-container": "#ffbcbb",
+                        "surface-tint": "#b32735",
+                        "surface-container-high": "#e8e7ef",
+                        "outline-variant": "#e1bebd",
+                        "tertiary-container": "#903f00",
+                        "on-primary-fixed": "#410008",
+                        "outline": "#8d706f",
+                        "surface-container-low": "#f3f3fa",
+                        "primary-fixed": "#ffdad9",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "on-error": "#ffffff",
+                        "tertiary": "#6b2d00",
+                        "on-tertiary-container": "#ffbf9d",
+                        "surface-variant": "#e2e2e9",
+                        "on-background": "#1a1b21",
+                        "on-surface": "#1a1b21",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#ffb3b2",
+                        "surface-container-highest": "#e2e2e9",
+                        "on-surface-variant": "#594140",
+                        "surface": "#f9f9ff",
+                        "primary-container": "#a81e2e",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#910720",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "row-height-standard": "56px",
+                        "gutter": "12px",
+                        "margin-edge": "16px",
+                        "row-height-compact": "48px",
+                        "hairline": "1px"
+                    },
+                    "fontFamily": {
+                        "data-num-lg": ["IBM Plex Mono"],
+                        "body-gu-md": ["Hind Vadodara"],
+                        "data-num-sm": ["IBM Plex Mono"],
+                        "wordmark": ["Shrikhand"],
+                        "body-gu-lg": ["Hind Vadodara"],
+                        "header-section": ["IBM Plex Sans"],
+                        "label-secondary": ["Hind Vadodara"]
+                    },
+                    "fontSize": {
+                        "data-num-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-gu-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "data-num-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "wordmark": ["24px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "body-gu-lg": ["18px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "header-section": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "label-secondary": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for the chips strip but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-in-up {
+                animation: fade-in-up 0.4s ease-out forwards;
+                opacity: 0;
+            }
+            .slide-in-right {
+                animation: slide-in-right 0.4s ease-out forwards;
+            }
+            .pop {
+                animation: pop 0.3s ease-out forwards;
+            }
+        }
+
+        @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slide-in-right {
+            0% { opacity: 0; transform: translateX(20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pop {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-gu-md min-h-screen flex flex-col pb-[112px] antialiased selection:bg-surface-variant slide-in-right">
+<!-- Top Navigation / Header -->
+<header class="flex items-center justify-between px-margin-edge h-row-height-standard w-full bg-surface border-b border-outline-variant shrink-0">
+<button aria-label="Back" class="w-10 h-10 flex items-center justify-center -ml-2 text-on-surface hover:bg-surface-container-low rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex-1 flex flex-col items-center justify-center text-center">
+<h1 class="font-body-gu-lg text-body-gu-lg text-on-surface leading-none">આહ્નિક ફોલો-અપ</h1>
+<p class="font-label-secondary text-label-secondary text-on-surface-variant leading-none mt-1">પાલડી બાળ સભા • અઠવાડિયું ૨૫-૩૧ ઓગસ્ટ</p>
+</div>
+<div class="w-10 h-10"></div> <!-- Placeholder for balance -->
+</header>
+<!-- Balak Chips Strip -->
+<section class="h-[64px] flex items-center overflow-x-auto whitespace-nowrap hide-scrollbar px-margin-edge gap-4 border-b border-outline-variant bg-surface shrink-0 fade-in-up" style="animation-delay: 50ms;">
+<!-- Active Balak -->
+<div class="flex flex-col items-center gap-[2px] cursor-pointer active:scale-95 transition-transform">
+<div class="relative w-10 h-10 rounded-full border-2 border-primary-container p-[2px]">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close up portrait of a 10 year old Indian boy with a neutral expression. Bright modern lighting, soft shadows, clean minimalist background. High quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz1VB4IUV6SRYc-p4oz4b5wnro7J7fbiYJ5WmxASaym6lM9pW3DYzGoZZiFWi23V78OCpV7XgeEMGuVueXOonU7r-rn0MYvyqhOHemkWayh7KD46B-eEXLIKDuVhAXS1AuLfVQrmS0B_jD_mesVQgD9b59Ysy7OracL85Pv_AFaRT_W9ew5jML0WAcFSiDQohmAFpVgOeNmd8tHsHnIx5oDrYPf2z8ntTZGmlX8ElXE6cV87HoWRJPqw"/>
+<!-- Recorded Status Dot -->
+<div class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container ring-[1.5px] ring-surface"></div>
+</div>
+<span class="font-header-section text-header-section text-on-surface w-12 truncate text-center">આરવ</span>
+</div>
+<!-- Inactive Balak 1 -->
+<div class="flex flex-col items-center gap-[2px] cursor-pointer active:scale-95 transition-transform">
+<div class="relative w-10 h-10 rounded-full">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close up portrait of a 11 year old Indian boy smiling gently. Bright modern lighting, soft shadows, clean minimalist background. High quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs2fuUcH6KZm-0-MP04BQ-zSNKIcVAN2mfUg6z080t3qJHRkV-3v_aREnReLoUfERJnKhBQ0YOncIm5qT2VqAo7RW2CW5EzuhmVj2CLMCLs6tdYayayxoKdKBU5Fes8TW4s_UvB_vZTkmq1RQEqU6fqNfCt-AeNKnVO40Gg3oQ2JhCM2-vg24xyanyW6-RxAvEMf6yo56i-VYPdoAeFw2w9AALVqwT4VkcX-o5C8Z-qCRLj1NUR9JUCg"/>
+<div class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container ring-[1.5px] ring-surface"></div>
+</div>
+<span class="font-header-section text-header-section text-on-surface-variant w-12 truncate text-center">દેવ</span>
+</div>
+<!-- Inactive Balak 2 -->
+<div class="flex flex-col items-center gap-[2px] cursor-pointer active:scale-95 transition-transform">
+<div class="relative w-10 h-10 rounded-full">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close up portrait of a 12 year old Indian boy looking thoughtful. Bright modern lighting, soft shadows, clean minimalist background. High quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbHex_k9SPTbI0t64N0tHW9tjrYkamQaHVz9SQLzvOJrv1iSm6soG_BE11T1M4W5ygIYIn9mXY_d54ZoKp3boMDJHwUFdyWeUlvkXE2TizV3kqU2lvEbe1Xe4MSFqwUNr7U6eRsNOubiN9Thc1JzSU2N4SLdpkhvaoAQ9byoSnpmTknLgLRaKggyUB52_aj4ItNw3U_ZrOAex5_S4YT477sI2kkD8IkH8qPb1ivJGFLfRmHkNCYO-_sg"/>
+</div>
+<span class="font-header-section text-header-section text-on-surface-variant w-12 truncate text-center">વેદાંત</span>
+</div>
+<!-- Inactive Balak 3 -->
+<div class="flex flex-col items-center gap-[2px] cursor-pointer active:scale-95 transition-transform">
+<div class="relative w-10 h-10 rounded-full">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close up portrait of a 10 year old Indian boy with a slight smile. Bright modern lighting, soft shadows, clean minimalist background. High quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhdW4pKIr-W9T-eOMAr7v95T1t1wwvfoMHtZbwd8KNr0KBh9DSOdaM6nY6v-JGY1ozwyH-7XGWlfKMlc86YbwqeiKegXX_c-FclDLMaLOkZ7eSexIh4fzyqYPBQ9zTa-qnJhWoUp_l6qpJntDB2pcDcvpDaOIhBjAxD5gvnWWtpQuBnhOLLYV47qR7lcJelu6H4_NUbXqpQRUKQSxgKECbjFBGt7ayst_4ZmC57BJX6b3KzwkbFzct_Q"/>
+<div class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container ring-[1.5px] ring-surface"></div>
+</div>
+<span class="font-header-section text-header-section text-on-surface-variant w-12 truncate text-center">કૃષ્ણ</span>
+</div>
+<!-- Inactive Balak 4 -->
+<div class="flex flex-col items-center gap-[2px] cursor-pointer active:scale-95 transition-transform">
+<div class="relative w-10 h-10 rounded-full">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close up portrait of a 11 year old Indian boy with neat hair. Bright modern lighting, soft shadows, clean minimalist background. High quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTkKdDS1b9ohC3uJlxt_hDAUo5ZMfHrsHTbKJYNqjaMO1ulyv68jtpsOHjNlyJs6Y-IE5OEOm56NsOJV3tEWlRsfZOwEv1h5H1lYTjuQrZcNutYAwlAHfOmVbHLlTrWnqC9i_nRa5yMo-scfCGGaxc9c7ezfEQo1auy5_Yd8UApzSJSi1pkpMLweKLlukR6npjtspwEytVpLFWAmp0nBudPMgaHP6humcz8LUHeJftjqFuaIC_3bb_RA"/>
+</div>
+<span class="font-header-section text-header-section text-on-surface-variant w-12 truncate text-center">ઓમ</span>
+</div>
+<!-- Inactive Balak 5 -->
+<div class="flex flex-col items-center gap-[2px] cursor-pointer pr-margin-edge active:scale-95 transition-transform">
+<div class="relative w-10 h-10 rounded-full">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close up portrait of a 9 year old Indian boy with bright eyes. Bright modern lighting, soft shadows, clean minimalist background. High quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ0K8LNqL0OcTyDuv4KvGqHvOLIM3-9ed_nyfndLWlNBZ75S0Kd6xq6iGYZDbRBOdQjsChGGQn1DWWTB6gwpshtELxpGqO58oqsdCeCNTCoH4UHVKL_5mc1cXHzoRfuCZx7Dzcua6682k4Zo1L_rNqCIb17HS-ylUkxhcWhj6s74DbN0wYo-CCgniBjw0a4FAq6TeSGC9BM--LocTnMlppAwxGizjBbvlYttJ0QqdUPcSvpYW-ZIIBzA"/>
+</div>
+<span class="font-header-section text-header-section text-on-surface-variant w-12 truncate text-center">યુગ</span>
+</div>
+</section>
+<!-- Active Balak Profile -->
+<section class="w-full px-margin-edge py-4 flex items-center gap-4 border-b border-outline-variant bg-surface-container-lowest shrink-0 fade-in-up" style="animation-delay: 100ms;">
+<div class="w-14 h-14 rounded-full overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a 10 year old Indian boy with a neutral expression. Bright modern lighting, soft shadows, clean minimalist background. High quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4NHHUm7RNxtjZzAa-p0-wGF_rTqT_eOBS17DvOFAF38VSywHm-VgOsHckdMuwu06qVdlyKgPlRRN22_3TViyKDu0JNgNV6Wvq4Klk6nAJ4BmRowXmGCUedYvZEoxDjxVvlQCTHePZo-J2XgysZB7r4wzAaqIZ-ALkVxICjfjwgAsIs4bMdfhzqMVetncoVVTBevXyulgrgCpmjzzUFctwT4mJUffMi7jlIl62rjFxaRua0mx4PzdIZg"/>
+</div>
+<div class="flex flex-col justify-center">
+<h2 class="font-body-gu-lg text-body-gu-lg font-semibold text-on-surface">આરવ પટેલ</h2>
+<p class="font-label-secondary text-label-secondary text-on-surface-variant">ધોરણ ૫ • સત્સંગી</p>
+</div>
+</section>
+<!-- Ahnik Ledger List -->
+<main class="flex-1 w-full bg-surface-container-lowest flex flex-col">
+<!-- Item 1: Done -->
+<div class="flex items-center justify-between min-h-row-height-standard py-2 px-margin-edge border-b border-outline-variant w-full fade-in-up cursor-pointer active:scale-95 transition-transform hover:bg-surface-container-low" style="animation-delay: 150ms;">
+<span class="font-body-gu-md text-body-gu-md text-on-surface flex-1 pr-4">પૂજા</span>
+<div class="w-[28px] h-[28px] flex items-center justify-center shrink-0">
+<div class="w-[24px] h-[24px] rounded-full bg-primary-container flex items-center justify-center pop">
+<span class="material-symbols-outlined text-on-primary" style="font-size: 16px;">check</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Done -->
+<div class="flex items-center justify-between min-h-row-height-standard py-2 px-margin-edge border-b border-outline-variant w-full fade-in-up cursor-pointer active:scale-95 transition-transform hover:bg-surface-container-low" style="animation-delay: 200ms;">
+<span class="font-body-gu-md text-body-gu-md text-on-surface flex-1 pr-4">તિલક-ચાંદલો</span>
+<div class="w-[28px] h-[28px] flex items-center justify-center shrink-0">
+<div class="w-[24px] h-[24px] rounded-full bg-primary-container flex items-center justify-center pop">
+<span class="material-symbols-outlined text-on-primary" style="font-size: 16px;">check</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Done -->
+<div class="flex items-center justify-between min-h-row-height-standard py-2 px-margin-edge border-b border-outline-variant w-full fade-in-up cursor-pointer active:scale-95 transition-transform hover:bg-surface-container-low" style="animation-delay: 250ms;">
+<span class="font-body-gu-md text-body-gu-md text-on-surface flex-1 pr-4">માનસી પૂજા</span>
+<div class="w-[28px] h-[28px] flex items-center justify-center shrink-0">
+<div class="w-[24px] h-[24px] rounded-full bg-primary-container flex items-center justify-center pop">
+<span class="material-symbols-outlined text-on-primary" style="font-size: 16px;">check</span>
+</div>
+</div>
+</div>
+<!-- Item 4: Not Done -->
+<div class="flex items-center justify-between min-h-row-height-standard py-2 px-margin-edge border-b border-outline-variant w-full fade-in-up cursor-pointer active:scale-95 transition-transform hover:bg-surface-container-low" style="animation-delay: 300ms;">
+<span class="font-body-gu-md text-body-gu-md text-on-surface flex-1 pr-4">આરતી</span>
+<div class="w-[28px] h-[28px] flex items-center justify-center shrink-0">
+<div class="w-[24px] h-[24px] rounded-full border-[1.5px] border-outline pop"></div>
+</div>
+</div>
+<!-- Item 5: Done (Long Text) -->
+<div class="flex items-center justify-between min-h-row-height-standard py-2 px-margin-edge border-b border-outline-variant w-full fade-in-up cursor-pointer active:scale-95 transition-transform hover:bg-surface-container-low" style="animation-delay: 350ms;">
+<span class="font-body-gu-md text-body-gu-md text-on-surface flex-1 pr-4 leading-snug">વચનામૃત / સ્વામીની વાતો વાંચન</span>
+<div class="w-[28px] h-[28px] flex items-center justify-center shrink-0">
+<div class="w-[24px] h-[24px] rounded-full bg-primary-container flex items-center justify-center pop">
+<span class="material-symbols-outlined text-on-primary" style="font-size: 16px;">check</span>
+</div>
+</div>
+</div>
+<!-- Item 6: Not Done -->
+<div class="flex items-center justify-between min-h-row-height-standard py-2 px-margin-edge border-b border-outline-variant w-full fade-in-up cursor-pointer active:scale-95 transition-transform hover:bg-surface-container-low" style="animation-delay: 400ms;">
+<span class="font-body-gu-md text-body-gu-md text-on-surface flex-1 pr-4">ઘરસભા</span>
+<div class="w-[28px] h-[28px] flex items-center justify-center shrink-0">
+<div class="w-[24px] h-[24px] rounded-full border-[1.5px] border-outline pop"></div>
+</div>
+</div>
+<!-- Item 7: Not Done -->
+<div class="flex items-center justify-between min-h-row-height-standard py-2 px-margin-edge border-b border-outline-variant w-full fade-in-up cursor-pointer active:scale-95 transition-transform hover:bg-surface-container-low" style="animation-delay: 450ms;">
+<span class="font-body-gu-md text-body-gu-md text-on-surface flex-1 pr-4">રવિ સભા</span>
+<div class="w-[28px] h-[28px] flex items-center justify-center shrink-0">
+<div class="w-[24px] h-[24px] rounded-full border-[1.5px] border-outline pop"></div>
+</div>
+</div>
+</main>
+<!-- Fixed Primary Action Bar -->
+<div class="fixed bottom-[56px] left-0 w-full h-row-height-standard px-margin-edge bg-surface border-t border-outline-variant flex items-center justify-center z-40">
+<button class="w-full h-[40px] rounded bg-primary-container text-on-primary font-body-gu-lg text-body-gu-lg flex items-center justify-center transition-transform hover:opacity-90 active:scale-[0.98]">
+            આહ્નિક સાચવો અને આગળ
+        </button>
+</div>
+<!-- BottomNavBar Component -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter bg-surface h-row-height-standard border-t border-outline-variant pb-safe">
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full gap-1">
+<span class="material-symbols-outlined" style="font-size: 24px;">home</span>
+<span class="font-label-secondary text-label-secondary">મુખ્ય</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full gap-1">
+<span class="material-symbols-outlined" style="font-size: 24px;">assignment</span>
+<span class="font-label-secondary text-label-secondary">કામ</span>
+</button>
+<!-- Active Tab: બાળકો -->
+<button class="flex flex-col items-center justify-center text-primary hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full gap-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 24px;">groups</span>
+<span class="font-label-secondary text-label-secondary">બાળકો</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full gap-1">
+<span class="material-symbols-outlined" style="font-size: 24px;">event_note</span>
+<span class="font-label-secondary text-label-secondary">સભા</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full gap-1">
+<span class="material-symbols-outlined" style="font-size: 24px;">menu</span>
+<span class="font-label-secondary text-label-secondary">વધુ</span>
+</button>
+</nav>
+<script>
+        // Simple script to handle toggling the ledger rows for demonstration
+        document.querySelectorAll('main > div').forEach(row => {
+            row.addEventListener('click', function() {
+                const circleContainer = this.querySelector('.w-\\[28px\\]');
+                const circle = circleContainer.firstElementChild;
+                
+                // Reset animation to allow re-triggering
+                circle.classList.remove('pop');
+                void circle.offsetWidth; // trigger reflow
+                
+                if(circle.classList.contains('border-outline')) {
+                    // Turn to Done
+                    circle.className = 'w-[24px] h-[24px] rounded-full bg-primary-container flex items-center justify-center pop';
+                    circle.innerHTML = '<span class="material-symbols-outlined text-on-primary" style="font-size: 16px;">check</span>';
+                } else {
+                    // Turn to Not Done
+                    circle.className = 'w-[24px] h-[24px] rounded-full border-[1.5px] border-outline pop';
+                    circle.innerHTML = '';
+                }
+            });
+        });
+    </script>
+</body></html>

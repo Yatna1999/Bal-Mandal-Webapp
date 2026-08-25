@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="gu"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>બાળકની પ્રોફાઇલ</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Shrikhand&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-container": "#ffbf9d",
+                        "primary": "#85001b",
+                        "primary-fixed": "#ffdad9",
+                        "secondary-container": "#8fa7fe",
+                        "on-secondary-fixed-variant": "#264191",
+                        "on-primary-container": "#ffbcbb",
+                        "on-surface": "#1a1b21",
+                        "tertiary-fixed": "#ffdbca",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "tertiary": "#6b2d00",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#ffb3b2",
+                        "outline-variant": "#e1bebd",
+                        "primary-fixed-dim": "#ffb3b2",
+                        "surface-dim": "#d9d9e0",
+                        "surface-container-highest": "#e2e2e9",
+                        "secondary": "#4059aa",
+                        "tertiary-fixed-dim": "#ffb68e",
+                        "inverse-on-surface": "#f0f0f7",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#331200",
+                        "secondary-fixed": "#dce1ff",
+                        "primary-container": "#a81e2e",
+                        "surface-container-high": "#e8e7ef",
+                        "on-background": "#1a1b21",
+                        "on-error-container": "#93000a",
+                        "outline": "#8d706f",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "on-secondary-fixed": "#00164e",
+                        "surface-container-low": "#f3f3fa",
+                        "on-primary-fixed": "#410008",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#1d3989",
+                        "surface": "#f9f9ff",
+                        "surface-variant": "#e2e2e9",
+                        "surface-tint": "#b32735",
+                        "tertiary-container": "#903f00",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#910720",
+                        "surface-container": "#ededf4",
+                        "background": "#f9f9ff",
+                        "on-surface-variant": "#594140",
+                        "inverse-surface": "#2e3036"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "gutter": "12px",
+                        "row-height-compact": "48px",
+                        "row-height-standard": "56px",
+                        "margin-edge": "16px",
+                        "hairline": "1px"
+                    },
+                    fontFamily: {
+                        "data-num-lg": ["IBM Plex Mono"],
+                        "body-gu-lg": ["Hind Vadodara"],
+                        "header-section": ["IBM Plex Sans"],
+                        "wordmark": ["Shrikhand"],
+                        "data-num-sm": ["IBM Plex Mono"],
+                        "body-gu-md": ["Hind Vadodara"],
+                        "label-secondary": ["Hind Vadodara"]
+                    },
+                    fontSize: {
+                        "data-num-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-gu-lg": ["18px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "header-section": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "wordmark": ["24px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "data-num-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-gu-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-secondary": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        pop: {
+                            '0%': { transform: 'scale(0.8)' },
+                            '50%': { transform: 'scale(1.1)' },
+                            '100%': { transform: 'scale(1)' },
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.4s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.3s ease-out forwards',
+                        'pop': 'pop 0.3s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #FDFCF9;
+            color: #1a1b21;
+        }
+        .surface-card {
+            background-color: #FFFFFF;
+        }
+        .hairline-border {
+            border-color: #DDD8CE;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+        *, ::before, ::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+  </style>
+</head>
+<body class="font-body-gu-md text-on-surface pb-[56px] motion-safe:animate-slide-in-right">
+<!-- Top AppBar -->
+<header class="bg-surface dark:bg-surface font-header-section text-header-section full-width top-0 border-b hairline-border flat no shadows transition-colors duration-150 flex items-center justify-between px-margin-edge h-row-height-standard w-full sticky z-10">
+<div class="flex items-center text-on-surface">
+<button aria-label="Back" class="mr-4 text-on-surface-variant hover:bg-surface-container-low rounded-full p-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-body-gu-lg">બાળકની પ્રોફાઇલ</h1>
+</div>
+<button class="text-[#1E3A8A] font-body-gu-md hover:bg-surface-container-low px-2 py-1 rounded active:scale-95 transition-transform">બદલો</button>
+</header>
+<main class="max-w-screen-md mx-auto surface-card min-h-screen">
+<!-- Identity Block -->
+<section class="px-margin-edge py-6 flex flex-col items-start border-b hairline-border motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 100ms;">
+<div class="flex items-center gap-4 w-full">
+<div class="w-[72px] h-[72px] rounded-full overflow-hidden shrink-0 border hairline-border">
+<img alt="Student Photo" class="w-full h-full object-cover" data-alt="A realistic headshot portrait of an Indian elementary school student boy, smiling gently, well-lit studio lighting, soft off-white background, neutral expression, high quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0NighHNr8AiwDl6if5EiRCLpvdgdgMB0eC19XpYqpG9HMRhU4KYbdcwR6XgMydy4a5kZqPIxi40FNaBEGFoUzsiANXs1WsVOIgP0KNBE5o3MGqbCZsuE-bJxXEHUTuI9CrklGf47N3JPWkrKeUqHVT1CsS4WhBxYLqgVbQWy2m3_BJpXRU0BLO215eehHbsxtmrk3fY6MTCIpXmJBD9o-KlqHMwyn-Ewekmszan8QqJTxlYIhPUVgpQ"/>
+</div>
+<div>
+<h2 class="text-[22px] leading-tight font-semibold font-body-gu-lg">આર્યન પટેલ</h2>
+<p class="text-[14px] text-[#5A6069] mt-1 font-body-gu-md">Aryan Patel</p>
+<div class="flex gap-2 mt-3">
+<span class="px-3 py-1 text-[13px] border hairline-border rounded text-on-surface-variant font-body-gu-md">સત્સંગી</span>
+<span class="px-3 py-1 text-[13px] border hairline-border rounded text-on-surface-variant font-body-gu-md">ધોરણ ૫</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Tab Strip -->
+<div class="flex w-full border-b hairline-border px-margin-edge motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 150ms;">
+<button class="flex-1 py-3 text-center font-body-gu-md text-primary-container border-b-2 border-primary-container active:scale-95 transition-transform">વિગત</button>
+<button class="flex-1 py-3 text-center font-body-gu-md text-on-surface-variant border-b-2 border-transparent active:scale-95 transition-transform">હાજરી</button>
+<button class="flex-1 py-3 text-center font-body-gu-md text-on-surface-variant border-b-2 border-transparent active:scale-95 transition-transform">આહ્નિક</button>
+</div>
+<!-- Detail Rows -->
+<div class="flex flex-col w-full">
+<div class="h-row-height-compact px-margin-edge flex items-center justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer" style="animation-delay: 200ms;">
+<span class="text-on-surface-variant">જન્મ તારીખ</span>
+<span class="font-data-num-sm">૧૫/૦૮/૨૦૧૨</span>
+</div>
+<div class="h-row-height-compact px-margin-edge flex items-center justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer" style="animation-delay: 250ms;">
+<span class="text-on-surface-variant">ધોરણ</span>
+<span class="font-data-num-sm">૫</span>
+</div>
+<div class="h-row-height-compact px-margin-edge flex items-center justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer" style="animation-delay: 300ms;">
+<span class="text-on-surface-variant">માધ્યમ</span>
+<span>ગુજરાતી</span>
+</div>
+<div class="h-row-height-compact px-margin-edge flex items-center justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer" style="animation-delay: 350ms;">
+<span class="text-on-surface-variant">શાળા</span>
+<span>સરસ્વતી વિદ્યાલય</span>
+</div>
+<div class="min-h-row-height-compact py-3 px-margin-edge flex items-start justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer" style="animation-delay: 400ms;">
+<span class="text-on-surface-variant whitespace-nowrap mr-4">સરનામું</span>
+<span class="text-right leading-snug">૧૨, શાંતિ સોસાયટી, પાલડી, અમદાવાદ</span>
+</div>
+<div class="h-row-height-compact px-margin-edge flex items-center justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer" style="animation-delay: 450ms;">
+<span class="text-on-surface-variant">માતાનું નામ</span>
+<span>ગીતાબેન પટેલ</span>
+</div>
+<div class="h-row-height-compact px-margin-edge flex items-center justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer hover:bg-surface-container-lowest" style="animation-delay: 500ms;">
+<span class="text-on-surface-variant">માતાનો મોબાઈલ નંબર</span>
+<div class="flex items-center gap-2 text-[#1E3A8A]">
+<span class="material-symbols-outlined text-[18px]">phone</span>
+<span class="font-data-num-sm">૯૮૭૬૫ ૪૩૨૧૦</span>
+</div>
+</div>
+<div class="h-row-height-compact px-margin-edge flex items-center justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer" style="animation-delay: 550ms;">
+<span class="text-on-surface-variant">પિતાનું નામ</span>
+<span>રાજેશભાઈ પટેલ</span>
+</div>
+<div class="h-row-height-compact px-margin-edge flex items-center justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer hover:bg-surface-container-lowest" style="animation-delay: 600ms;">
+<span class="text-on-surface-variant">પિતાનો મોબાઈલ નંબર</span>
+<div class="flex items-center gap-2 text-[#1E3A8A]">
+<span class="material-symbols-outlined text-[18px]">phone</span>
+<span class="font-data-num-sm">૯૮૯૮૯ ૮૯૮૯૮</span>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<div class="px-margin-edge mt-6 border-b border-[#B9B2A4] pb-2 mb-2 motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 650ms;">
+<h3 class="font-header-section text-header-section text-on-surface-variant uppercase">વિશેષ નિયમ</h3>
+</div>
+<!-- Niyam Row -->
+<div class="px-margin-edge py-3 flex items-center justify-between border-b hairline-border motion-safe:animate-fade-in-up opacity-0 active:scale-95 transition-transform cursor-pointer" style="animation-delay: 700ms;">
+<div>
+<h4 class="text-[15px] font-medium text-on-surface">ટીવી નહીં જોવાનો નિયમ</h4>
+<p class="font-data-num-sm text-[12px] text-[#5A6069] mt-1">૧ ઓગસ્ટ થી ૩૧ ઓક્ટોબર</p>
+</div>
+<span class="bg-[#FBEEEF] text-primary-container px-3 py-1 rounded text-[13px] font-medium border border-[#FBEEEF] motion-safe:animate-pop inline-block">ચાલુ</span>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface dark:bg-surface font-label-secondary text-label-secondary font-wordmark text-wordmark fixed bottom-0 w-full h-row-height-standard border-t border-outline-variant flat no shadows hover:bg-surface-container-low active:scale-95 transition-transform fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter bg-surface md:hidden">
+<div class="flex flex-col items-center justify-center text-outline w-16 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px] mb-1">home</span>
+<span class="text-[10px] leading-none">મુખ્ય</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline w-16 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px] mb-1">assignment</span>
+<span class="text-[10px] leading-none">કામ</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim w-16 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px] mb-1" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="text-[10px] leading-none">બાળકો</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline w-16 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px] mb-1">event_note</span>
+<span class="text-[10px] leading-none">સભા</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline w-16 cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px] mb-1">menu</span>
+<span class="text-[10px] leading-none">વધુ</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html lang="gu"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>હાજરી પત્રક - Bal Sabha</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Shrikhand&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#00164e",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#a81e2e",
+                      "surface-container": "#ededf4",
+                      "inverse-surface": "#2e3036",
+                      "secondary-fixed-dim": "#b6c4ff",
+                      "on-secondary-container": "#1d3989",
+                      "outline-variant": "#DDD8CE",
+                      "surface-tint": "#b32735",
+                      "on-tertiary-fixed": "#331200",
+                      "on-tertiary": "#ffffff",
+                      "secondary-container": "#8fa7fe",
+                      "error-container": "#ffdad6",
+                      "on-primary-container": "#ffbcbb",
+                      "surface-bright": "#f9f9ff",
+                      "background": "#FDFCF9",
+                      "surface-dim": "#d9d9e0",
+                      "on-tertiary-container": "#ffbf9d",
+                      "on-surface": "#16181D",
+                      "tertiary-fixed": "#ffdbca",
+                      "tertiary-fixed-dim": "#ffb68e",
+                      "secondary-fixed": "#dce1ff",
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#ffdad9",
+                      "on-primary": "#ffffff",
+                      "surface": "#FFFFFF",
+                      "tertiary": "#6b2d00",
+                      "tertiary-container": "#903f00",
+                      "inverse-primary": "#ffb3b2",
+                      "inverse-on-surface": "#f0f0f7",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#1a1b21",
+                      "on-secondary-fixed-variant": "#264191",
+                      "on-surface-variant": "#5A6069",
+                      "surface-container-low": "#f3f3fa",
+                      "on-primary-fixed-variant": "#910720",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#410008",
+                      "primary": "#A81E2E",
+                      "primary-fixed-dim": "#ffb3b2",
+                      "surface-container-highest": "#e2e2e9",
+                      "secondary": "#1E3A8A",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "surface-container-high": "#e8e7ef",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#FFFFFF",
+                      "outline": "#949AA3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "row-height-compact": "48px",
+                      "gutter": "12px",
+                      "hairline": "1px",
+                      "margin-edge": "16px",
+                      "row-height-standard": "56px"
+              },
+              "fontFamily": {
+                      "data-num-lg": [
+                              "IBM Plex Mono"
+                      ],
+                      "data-num-sm": [
+                              "IBM Plex Mono"
+                      ],
+                      "body-gu-md": [
+                              "Hind Vadodara"
+                      ],
+                      "header-section": [
+                              "IBM Plex Sans"
+                      ],
+                      "label-secondary": [
+                              "Hind Vadodara"
+                      ],
+                      "body-gu-lg": [
+                              "Hind Vadodara"
+                      ],
+                      "wordmark": [
+                              "Shrikhand"
+                      ]
+              },
+              "fontSize": {
+                      "data-num-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-num-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-gu-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "header-section": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-secondary": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-gu-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "wordmark": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              },
+              animation: {
+                'slide-in-right': 'slideInRight 0.4s ease-out forwards',
+                'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                'pop': 'pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              },
+              keyframes: {
+                slideInRight: {
+                  '0%': { transform: 'translateX(20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                fadeInUp: {
+                  '0%': { transform: 'translateY(10px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                pop: {
+                  '0%': { transform: 'scale(0.8)' },
+                  '50%': { transform: 'scale(1.1)' },
+                  '100%': { transform: 'scale(1)' },
+                }
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FDFCF9;
+            color: #16181D;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bg-surface {
+            background-color: #FFFFFF;
+        }
+        .border-outline-variant {
+            border-color: #DDD8CE;
+        }
+        .border-outline-strong {
+            border-color: #B9B2A4;
+        }
+        
+        /* Custom Ledger Styles */
+        .circle-pending {
+            border: 1.5px dashed #949AA3;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            transition: all 0.2s ease;
+        }
+        .circle-hollow {
+            border: 1.5px solid #949AA3;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            transition: all 0.2s ease;
+        }
+        .circle-filled {
+            background-color: #A81E2E;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            transition: all 0.2s ease;
+        }
+        .animate-pop {
+            animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .motion-safe\:animate-slide-in-right,
+            .motion-safe\:animate-fade-in-up,
+            .animate-pop {
+                animation: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+            .transition-transform {
+                transition: none !important;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-gu-md pb-[168px] md:pb-0 pt-row-height-standard md:pt-0">
+<div class="motion-safe:animate-slide-in-right opacity-0" style="animation-fill-mode: forwards;">
+<!-- Top Navigation (Visible on Web & Mobile for this specific transactional screen type) -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-edge h-row-height-standard bg-surface border-b border-outline-variant flat no shadows md:hidden">
+<button class="flex items-center text-on-surface active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-body-gu-lg text-[18px]">હાજરી પત્રક</h1>
+<button class="font-body-gu-md text-secondary text-[15px] font-medium tracking-wide active:scale-95 transition-transform">
+            બદલો
+        </button>
+</header>
+<main class="w-full max-w-[600px] mx-auto md:mt-8 md:border md:border-outline-variant bg-surface">
+<!-- Context Strip -->
+<div class="px-margin-edge py-3 border-b border-outline-variant bg-surface">
+<h2 class="font-body-gu-md font-semibold text-[15px]">મણિનગર - ૧ બાળ સભા</h2>
+<p class="font-data-num-sm text-on-surface-variant text-[13px] mt-1">બુધવાર, ૨૭ ઓગસ્ટ • ૯:૦૦ થી ૧૦:૩૦ રાત્રે</p>
+</div>
+<!-- Sticky Column Header -->
+<div class="sticky top-row-height-standard z-40 bg-surface px-margin-edge py-2 border-b border-outline-strong flex items-center md:top-0">
+<div class="w-10"></div> <!-- Spacer for avatar -->
+<div class="flex-grow font-header-section text-outline text-[11px] pl-3 uppercase">બાળક</div>
+<div class="w-14 text-center font-header-section text-outline text-[11px] uppercase">સંપર્ક</div>
+<div class="w-14 text-center font-header-section text-outline text-[11px] uppercase">હાજર</div>
+<div class="w-14 text-center font-header-section text-outline text-[11px] uppercase">ગેરહાજર</div>
+</div>
+<!-- Ledger Rows -->
+<div class="bg-surface">
+<!-- Row 1: Present, Contacted -->
+<div class="flex items-center px-margin-edge h-row-height-standard border-b border-outline-variant w-full motion-safe:animate-fade-in-up opacity-0 active:scale-[0.98] transition-transform cursor-pointer" style="animation-delay: 50ms; animation-fill-mode: forwards;">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A small circular portrait placeholder showing a serene, minimalist vector illustration of a young Indian boy in traditional dress. The background is a clean, off-white (#FDFCF9) paper texture. The style is flat, precise, and graphic, reminiscent of mid-century administrative graphics. Colors are constrained to deep reds and muted greys to match the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmpaIxGFP3WhBU39y40h1HqoE7A6v1wazEGzXSwRrLRB3DP6dP6LffPuu8hPA5p4_67lYEdDP6m-5AkH6bqzYRNsEeh7SsuWsCG119lcESvrEu5lLoJFSZnhXu0EgLX3rHkq7oECYuh2okrZDw6cp71KS-btchruk54z3qEk63SdGxOIhtxDmUhJm73HicqmiXSoZMVO2xeB41XVPLz5pDhFl8yD8LzfxeaRYQPsc8f-Y_tToyHD8ZAQ"/>
+</div>
+<div class="flex-grow pl-3 flex flex-col justify-center">
+<span class="font-body-gu-md font-medium text-[15px] leading-tight text-on-surface">આરવ પટેલ</span>
+<span class="font-data-num-sm text-outline text-[12px] leading-tight">ધોરણ ૫</span>
+</div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+</div>
+<!-- Row 2: Absent, Contacted -->
+<div class="flex items-center px-margin-edge h-row-height-standard border-b border-outline-variant w-full motion-safe:animate-fade-in-up opacity-0 active:scale-[0.98] transition-transform cursor-pointer" style="animation-delay: 100ms; animation-fill-mode: forwards;">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A small circular portrait placeholder showing a serene, minimalist vector illustration of a young Indian boy in traditional dress. The background is a clean, off-white (#FDFCF9) paper texture. The style is flat, precise, and graphic, reminiscent of mid-century administrative graphics. Colors are constrained to deep reds and muted greys to match the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBleViRKoJCupiaC4sCik6XYUIhFUoGVbCRwUrASn34bZwvv75QxpzOJz3gTnqZejMNbj7jcCpfYboAL9_91Xhmko6276NiXhNjjxML6owhxbSN-TLvuiuisEa8Q8EodVZe6r6hhVgclqSsMke7B6R1m3bg5P8QrVXdyxmmQyECB9zzdTvtnYvdDJ9X8S24pgwLuoCGbJhkNCnY9Dqg8-CN_Go-5fwMmbBCdOxb4QIbQbgmbEezFc6pXA"/>
+</div>
+<div class="flex-grow pl-3 flex flex-col justify-center">
+<span class="font-body-gu-md font-medium text-[15px] leading-tight text-on-surface">દિવાંગ શાહ</span>
+<span class="font-data-num-sm text-outline text-[12px] leading-tight">ધોરણ ૬</span>
+</div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+</div>
+<!-- Row 3: Pending, Not Contacted -->
+<div class="flex items-center px-margin-edge h-row-height-standard border-b border-outline-variant w-full motion-safe:animate-fade-in-up opacity-0 active:scale-[0.98] transition-transform cursor-pointer" style="animation-delay: 150ms; animation-fill-mode: forwards;">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A small circular portrait placeholder showing a serene, minimalist vector illustration of a young Indian boy in traditional dress. The background is a clean, off-white (#FDFCF9) paper texture. The style is flat, precise, and graphic, reminiscent of mid-century administrative graphics. Colors are constrained to deep reds and muted greys to match the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1NQ08c7mCj3jpRXZcRdmNUSm2xTbl1D-UUm_m5u_K-jNUF2pOuryWSCvRO3W6rNEjdJIUnmFCErpkZsMsHKq9SJXsSIPuUJv8frFO6hbCKIZd7QvOtm1BvyMEToBeYl6Q5kvgDWbTOyPyQUpE6J5WTAhiFzRfH6TZeXU_-WDTLKEe8ekd0I0ReHpXDY1eaUJCZj0pizeXWt5TtEhUFvXNcQ6thYNIcAvVCLVMZyVaX9UGEYD5tqQHVQ"/>
+</div>
+<div class="flex-grow pl-3 flex flex-col justify-center">
+<span class="font-body-gu-md font-medium text-[15px] leading-tight text-on-surface">હેત ત્રિવેદી</span>
+<span class="font-data-num-sm text-outline text-[12px] leading-tight">ધોરણ ૪</span>
+</div>
+<div class="w-14 flex justify-center items-center"><div class="circle-pending"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+</div>
+<!-- Row 4: Present, Contacted -->
+<div class="flex items-center px-margin-edge h-row-height-standard border-b border-outline-variant w-full motion-safe:animate-fade-in-up opacity-0 active:scale-[0.98] transition-transform cursor-pointer" style="animation-delay: 200ms; animation-fill-mode: forwards;">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A small circular portrait placeholder showing a serene, minimalist vector illustration of a young Indian boy in traditional dress. The background is a clean, off-white (#FDFCF9) paper texture. The style is flat, precise, and graphic, reminiscent of mid-century administrative graphics. Colors are constrained to deep reds and muted greys to match the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAiP8CjiQl8baJ1PdLOfM0k0nn04pA6A5L6-Mm4rwfH4-kiLjYCtvlCnZiVVGdSNovsdtWhz5a1eZE-S0hAGDCFJA6xuuUb7-D_vjjckSqhCAyNGsDwiWNkr444WVBA5TTIMbge2yHVIYq78q_M9Z61KST2OrxMZWX-shX-qa3vG7dyvfFIbKLSdGB8zPAt0tRmhp7MMl9PxXTsz7ina3SrJx3OYHBLJW32e878rYdV-ISPECBh5Hg5w"/>
+</div>
+<div class="flex-grow pl-3 flex flex-col justify-center">
+<span class="font-body-gu-md font-medium text-[15px] leading-tight text-on-surface">જીગર દવે</span>
+<span class="font-data-num-sm text-outline text-[12px] leading-tight">ધોરણ ૭</span>
+</div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+</div>
+<!-- Row 5: Absent, Contacted -->
+<div class="flex items-center px-margin-edge h-row-height-standard border-b border-outline-variant w-full motion-safe:animate-fade-in-up opacity-0 active:scale-[0.98] transition-transform cursor-pointer" style="animation-delay: 250ms; animation-fill-mode: forwards;">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A small circular portrait placeholder showing a serene, minimalist vector illustration of a young Indian boy in traditional dress. The background is a clean, off-white (#FDFCF9) paper texture. The style is flat, precise, and graphic, reminiscent of mid-century administrative graphics. Colors are constrained to deep reds and muted greys to match the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6LOTji_pM1wdz6BaofKdNJE_g5zcICH40pYCkbR3LTt5bLedCNwxyuSYFnwIulFWps4_NIONNiJjkYf8B7MpSBGqYKCy3cQb_FK1s_4VTRfbnK4E8m-6x7zXC8JVo1AeGk5GomKVsssvUaDZwWJ8UHNs0xNN8wLQ0zpb-3S7qTDHsXSRkP15f0lfqRdCZ_0U9KxoL3XYd4iEqWTm0vDnyRdZWYRZiTF6bdUyAg_ALee_K1mae6usZig"/>
+</div>
+<div class="flex-grow pl-3 flex flex-col justify-center">
+<span class="font-body-gu-md font-medium text-[15px] leading-tight text-on-surface">કેવલ જોષી</span>
+<span class="font-data-num-sm text-outline text-[12px] leading-tight">ધોરણ ૫</span>
+</div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+</div>
+<!-- Row 6: Present, Contacted -->
+<div class="flex items-center px-margin-edge h-row-height-standard border-b border-outline-variant w-full motion-safe:animate-fade-in-up opacity-0 active:scale-[0.98] transition-transform cursor-pointer" style="animation-delay: 300ms; animation-fill-mode: forwards;">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A small circular portrait placeholder showing a serene, minimalist vector illustration of a young Indian boy in traditional dress. The background is a clean, off-white (#FDFCF9) paper texture. The style is flat, precise, and graphic, reminiscent of mid-century administrative graphics. Colors are constrained to deep reds and muted greys to match the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8kr73u6Dg0hi8HFyld2VwU1msd5qos7wYDSIFwIn5L48ydynbyWHa7JHifunCprri0TTJUKWCyhfsiSxuzihUUg0TFW8zmXw27DDrAhwYVJuCiSVU8ESZqpqqCtNDekwAWm46f5OM2ZtWoM2xLB67RXxt5N0vC7QMgzb6biFOyMwBsYa33swWTV21V6g5iGxqNo3kH1nVM8auJRJSNhUBXvMd867QHhdw0XGzvPAZhn2GVRzYmnrn1g"/>
+</div>
+<div class="flex-grow pl-3 flex flex-col justify-center">
+<span class="font-body-gu-md font-medium text-[15px] leading-tight text-on-surface">મનન દેસાઈ</span>
+<span class="font-data-num-sm text-outline text-[12px] leading-tight">ધોરણ ૮</span>
+</div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+</div>
+<!-- Row 7: Pending, Not Contacted -->
+<div class="flex items-center px-margin-edge h-row-height-standard border-b border-outline-variant w-full motion-safe:animate-fade-in-up opacity-0 active:scale-[0.98] transition-transform cursor-pointer" style="animation-delay: 350ms; animation-fill-mode: forwards;">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A small circular portrait placeholder showing a serene, minimalist vector illustration of a young Indian boy in traditional dress. The background is a clean, off-white (#FDFCF9) paper texture. The style is flat, precise, and graphic, reminiscent of mid-century administrative graphics. Colors are constrained to deep reds and muted greys to match the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3aaoTtdK7IZmrmoLthnf11bbBraNmZ55hKCUbtRn4ItWHNOWAEZC6WxXr3453Sr-vU_bF1pUSfvEfd5GK12MOggwFaJwZXX7-5ltPGWO_LJWmiUbHjMSx-fXES2H02oX0NjdihesaQPnIqMFKWTRW5Mo84Umjq0wVb27aPFcYUWsgo7g2VuhqUvxSfb4QNvnRdj5MWgPQKIqwF6d8J-enBJ3J7e2mh9HJg6kMjue8XEkQp-60mZDkSA"/>
+</div>
+<div class="flex-grow pl-3 flex flex-col justify-center">
+<span class="font-body-gu-md font-medium text-[15px] leading-tight text-on-surface">નિલય પંચાલ</span>
+<span class="font-data-num-sm text-outline text-[12px] leading-tight">ધોરણ ૬</span>
+</div>
+<div class="w-14 flex justify-center items-center"><div class="circle-pending"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+</div>
+<!-- Row 8: Present, Contacted -->
+<div class="flex items-center px-margin-edge h-row-height-standard border-b border-outline-variant w-full motion-safe:animate-fade-in-up opacity-0 active:scale-[0.98] transition-transform cursor-pointer" style="animation-delay: 400ms; animation-fill-mode: forwards;">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A small circular portrait placeholder showing a serene, minimalist vector illustration of a young Indian boy in traditional dress. The background is a clean, off-white (#FDFCF9) paper texture. The style is flat, precise, and graphic, reminiscent of mid-century administrative graphics. Colors are constrained to deep reds and muted greys to match the UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcRvxSMDD_5eCkMfmqYU4fOcPcyWCl_jcnEBeGHgrvokH576ybFh5D92kWVfTkUZ0rT490nk1MznO8v3-4ZCOhyT6yVy7KsxJW_mzTOpisYK1W6aPHE4lTnz36YHACHi_UmGulAK1c4viqu-sFUaLrWe5e1kmT3m9gcxWfqNmn2jy4IOIOE7tHu1vWvc8P05JhxUgkKUdD4DJzkrBx761eguERt-EB-QKcVI5MffHZ8uuk_mLKlhmBHA"/>
+</div>
+<div class="flex-grow pl-3 flex flex-col justify-center">
+<span class="font-body-gu-md font-medium text-[15px] leading-tight text-on-surface">ઓમ શાસ્ત્રી</span>
+<span class="font-data-num-sm text-outline text-[12px] leading-tight">ધોરણ ૫</span>
+</div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-filled"></div></div>
+<div class="w-14 flex justify-center items-center"><div class="circle-hollow"></div></div>
+</div>
+</div>
+<!-- Footer Block: Contact Assignment -->
+<div class="px-margin-edge py-6 bg-surface mb-20 md:mb-0 motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 450ms; animation-fill-mode: forwards;">
+<h3 class="font-header-section text-outline text-[11px] mb-3 uppercase">સંપર્ક કોણે કર્યો</h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-[6px] border border-primary bg-[#FBEEEF] text-primary font-body-gu-md text-[14px] active:scale-95 transition-transform">
+                    વિજયભાઈ
+                </button>
+<button class="px-3 py-1.5 rounded-[6px] border border-primary bg-[#FBEEEF] text-primary font-body-gu-md text-[14px] active:scale-95 transition-transform">
+                    કિશોરભાઈ
+                </button>
+<button class="px-3 py-1.5 rounded-[6px] border border-outline-variant bg-surface text-on-surface font-body-gu-md text-[14px] active:scale-95 transition-transform">
+                    રમેશભાઈ
+                </button>
+</div>
+</div>
+</main>
+</div>
+<!-- Primary Action Bar (Fixed above bottom nav) -->
+<div class="fixed bottom-[56px] left-0 w-full h-row-height-standard bg-primary text-on-primary flex items-center justify-between px-margin-edge z-50 md:bottom-0 md:max-w-[600px] md:left-1/2 md:-translate-x-1/2 md:rounded-t-[6px]">
+<div class="font-data-num-sm text-[13px]">
+            કુલ હાજર ૪ • ગેરહાજર ૨
+        </div>
+<button class="font-body-gu-md font-semibold text-[16px] tracking-wide active:scale-95 transition-transform">
+            હાજરી સાચવો
+        </button>
+</div>
+<!-- BottomNavBar (Component based) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter bg-surface h-row-height-standard border-t border-outline-variant md:hidden flat no shadows">
+<a class="flex flex-col items-center justify-center text-outline w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-secondary text-label-secondary mt-1">મુખ્ય</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="assignment" data-weight="fill" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label-secondary text-label-secondary mt-1">કામ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-secondary text-label-secondary mt-1">બાળકો</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-label-secondary text-label-secondary mt-1">સભા</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline w-16 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-label-secondary text-label-secondary mt-1">વધુ</span>
+</a>
+</nav>
+<script>
+        function triggerPop(element) {
+            element.classList.remove('animate-pop');
+            void element.offsetWidth; // trigger reflow
+            element.classList.add('animate-pop');
+        }
+
+        // Simple toggle logic for visual demonstration
+        document.addEventListener('DOMContentLoaded', () => {
+            const rows = document.querySelectorAll('.h-row-height-standard.border-b');
+            
+            rows.forEach(row => {
+                const circles = row.querySelectorAll('div[class^="circle-"]');
+                if(circles.length === 3) {
+                    const contact = circles[0];
+                    const present = circles[1];
+                    const absent = circles[2];
+                    
+                    // Toggle contact status
+                    contact.parentElement.addEventListener('click', () => {
+                        if(contact.className.includes('circle-pending')) {
+                            contact.className = 'circle-filled animate-pop';
+                        } else {
+                            contact.className = 'circle-pending animate-pop';
+                            present.className = 'circle-hollow animate-pop';
+                            absent.className = 'circle-hollow animate-pop';
+                        }
+                    });
+                    
+                    // Attendance logic
+                    present.parentElement.addEventListener('click', () => {
+                        if(contact.className.includes('circle-filled')) {
+                            present.className = 'circle-filled animate-pop';
+                            absent.className = 'circle-hollow animate-pop';
+                        }
+                    });
+                    
+                    absent.parentElement.addEventListener('click', () => {
+                        if(contact.className.includes('circle-filled')) {
+                            absent.className = 'circle-filled animate-pop';
+                            present.className = 'circle-hollow animate-pop';
+                        }
+                    });
+                }
+            });
+
+            // Chip selection
+            const chips = document.querySelectorAll('.flex.flex-wrap button');
+            chips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    if(chip.classList.contains('bg-[#FBEEEF]')) {
+                        chip.className = 'px-3 py-1.5 rounded-[6px] border border-outline-variant bg-surface text-on-surface font-body-gu-md text-[14px] active:scale-95 transition-transform';
+                    } else {
+                        chip.className = 'px-3 py-1.5 rounded-[6px] border border-primary bg-[#FBEEEF] text-primary font-body-gu-md text-[14px] active:scale-95 transition-transform';
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

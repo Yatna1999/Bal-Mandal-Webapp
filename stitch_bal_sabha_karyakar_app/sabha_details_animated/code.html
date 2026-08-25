@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html lang="gu"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sabha Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Shrikhand&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              keyframes: {
+                'fade-in-up': {
+                  '0%': { opacity: '0', transform: 'translateY(10px)' },
+                  '100%': { opacity: '1', transform: 'translateY(0)' },
+                },
+                'slide-in-right': {
+                  '0%': { transform: 'translateX(20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                'pop': {
+                  '0%': { transform: 'scale(0.8)', opacity: '0' },
+                  '50%': { transform: 'scale(1.1)' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                }
+              },
+              animation: {
+                'fade-in-up': 'fade-in-up 0.4s ease-out forwards',
+                'slide-in-right': 'slide-in-right 0.3s ease-out forwards',
+                'pop': 'pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              },
+              "colors": {
+                      "inverse-on-surface": "#f0f0f7",
+                      "surface-variant": "#e2e2e9",
+                      "primary-container": "#a81e2e",
+                      "error-container": "#ffdad6",
+                      "primary": "#85001b",
+                      "tertiary": "#6b2d00",
+                      "secondary": "#4059aa",
+                      "surface-container-highest": "#e2e2e9",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#dce1ff",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "secondary-fixed-dim": "#b6c4ff",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#ffb3b2",
+                      "on-primary-fixed": "#410008",
+                      "surface": "#f9f9ff",
+                      "inverse-surface": "#2e3036",
+                      "on-secondary-fixed": "#00164e",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#ededf4",
+                      "surface-bright": "#f9f9ff",
+                      "outline-variant": "#e1bebd",
+                      "tertiary-container": "#903f00",
+                      "surface-tint": "#b32735",
+                      "secondary-container": "#8fa7fe",
+                      "inverse-primary": "#ffb3b2",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#d9d9e0",
+                      "tertiary-fixed-dim": "#ffb68e",
+                      "background": "#f9f9ff",
+                      "outline": "#8d706f",
+                      "on-primary-container": "#ffbcbb",
+                      "on-secondary-container": "#1d3989",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#331200",
+                      "primary-fixed": "#ffdad9",
+                      "on-primary-fixed-variant": "#910720",
+                      "on-secondary-fixed-variant": "#264191",
+                      "on-surface": "#1a1b21",
+                      "on-error": "#ffffff",
+                      "on-surface-variant": "#594140",
+                      "on-background": "#1a1b21",
+                      "tertiary-fixed": "#ffdbca",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#e8e7ef",
+                      "on-tertiary-container": "#ffbf9d",
+                      "surface-container-low": "#f3f3fa"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-edge": "16px",
+                      "gutter": "12px",
+                      "row-height-compact": "48px",
+                      "row-height-standard": "56px",
+                      "hairline": "1px"
+              },
+              "fontFamily": {
+                      "header-section": [
+                              "IBM Plex Sans"
+                      ],
+                      "body-gu-lg": [
+                              "Hind Vadodara"
+                      ],
+                      "label-secondary": [
+                              "Hind Vadodara"
+                      ],
+                      "body-gu-md": [
+                              "Hind Vadodara"
+                      ],
+                      "data-num-lg": [
+                              "IBM Plex Mono"
+                      ],
+                      "wordmark": [
+                              "Shrikhand"
+                      ],
+                      "data-num-sm": [
+                              "IBM Plex Mono"
+                      ]
+              },
+              "fontSize": {
+                      "header-section": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-gu-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-secondary": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-gu-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-num-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "wordmark": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-num-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        body { background-color: #FDFCF9; }
+        .border-hairline { border-color: #DDD8CE; }
+        .text-sub { color: #5A6069; }
+        
+        @media (prefers-reduced-motion: reduce) {
+          *, ::before, ::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+          }
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-gu-md text-on-background pb-row-height-standard">
+<div class="motion-safe:animate-slide-in-right opacity-0" style="animation-delay: 0ms; animation-fill-mode: forwards;">
+<!-- Header -->
+<header class="bg-surface flex items-center justify-between px-margin-edge h-row-height-standard w-full border-b border-hairline">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform">arrow_back</span>
+<h1 class="font-header-section text-header-section text-primary">પાલડી બાળ સભા</h1>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:scale-95 transition-transform">more_horiz</span>
+</header>
+<!-- Context Block -->
+<section class="bg-surface px-margin-edge py-4 border-b border-hairline flex justify-between items-start motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 100ms; animation-fill-mode: forwards;">
+<div>
+<h2 class="font-body-gu-lg text-body-gu-lg font-semibold">બુધવાર, ૨૭ ઓગસ્ટ</h2>
+<p class="font-data-num-sm text-data-num-sm text-sub mt-1">૯:૦૦ થી ૧૦:૩૦ રાત્રે</p>
+</div>
+<div class="border border-hairline rounded-full px-3 py-1">
+<span class="font-label-secondary text-label-secondary text-on-surface-variant">પાકી સભા</span>
+</div>
+</section>
+<!-- Task Checklist -->
+<section class="bg-surface">
+<!-- Item 1 -->
+<div class="flex items-center justify-between px-margin-edge py-3 border-b border-hairline min-h-[64px] active:scale-[0.98] transition-transform cursor-pointer motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 150ms; animation-fill-mode: forwards;">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full bg-primary-container flex-shrink-0 flex items-center justify-center motion-safe:animate-pop">
+<span class="material-symbols-outlined text-[16px] text-white" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<h3 class="font-body-gu-md text-body-gu-md">કાર્યક્રમ તૈયાર કરો</h3>
+<p class="font-label-secondary text-label-secondary text-sub">પૂરું કરનાર: યત્ન</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between px-margin-edge py-3 border-b border-hairline min-h-[64px] active:scale-[0.98] transition-transform cursor-pointer motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 200ms; animation-fill-mode: forwards;">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full bg-primary-container flex-shrink-0 flex items-center justify-center motion-safe:animate-pop">
+<span class="material-symbols-outlined text-[16px] text-white" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<h3 class="font-body-gu-md text-body-gu-md">સભા પૂર્વે સંપર્ક કરો</h3>
+<p class="font-label-secondary text-label-secondary text-sub">૨૩ માંથી ૨૩ પૂરા</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between px-margin-edge py-3 border-b border-hairline min-h-[64px] active:scale-[0.98] transition-transform cursor-pointer motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 250ms; animation-fill-mode: forwards;">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full border-[1.5px] border-dashed border-[#94A3B8] flex-shrink-0 motion-safe:animate-pop"></div>
+<div>
+<h3 class="font-body-gu-md text-body-gu-md">હાજરી નોંધો</h3>
+<p class="font-label-secondary text-label-secondary text-sub">આજે રાત્રે ૧૦:૩૦ પછી</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center justify-between px-margin-edge py-3 border-b border-hairline min-h-[64px] active:scale-[0.98] transition-transform cursor-pointer motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 300ms; animation-fill-mode: forwards;">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full border-[1.5px] border-dashed border-[#94A3B8] flex-shrink-0 motion-safe:animate-pop"></div>
+<div>
+<h3 class="font-body-gu-md text-body-gu-md">આહ્નિક ફોલો-અપ કરો</h3>
+<p class="font-label-secondary text-label-secondary text-sub">આજે રાત્રે ૧૦:૩૦ પછી</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Item 5 -->
+<div class="flex items-center justify-between px-margin-edge py-3 border-b border-hairline min-h-[64px] active:scale-[0.98] transition-transform cursor-pointer motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 350ms; animation-fill-mode: forwards;">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 rounded-full border-[1.5px] border-dashed border-[#94A3B8] flex-shrink-0 motion-safe:animate-pop"></div>
+<div>
+<h3 class="font-body-gu-md text-body-gu-md">અહેવાલ ભરો</h3>
+<p class="font-label-secondary text-label-secondary text-sub">કાલે રાત્રે ૯ સુધીમાં</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</section>
+<!-- Details Sections -->
+<section class="px-margin-edge py-6 space-y-6">
+<div class="motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 400ms; animation-fill-mode: forwards;">
+<label class="block font-header-section text-header-section uppercase tracking-widest text-on-surface-variant mb-2 pb-1 border-b border-[#B9B2A4]">કાર્યક્રમ</label>
+<textarea class="w-full bg-surface border border-hairline rounded-lg p-3 font-body-gu-md text-body-gu-md h-[120px] focus:ring-0 focus:border-outline resize-none transition-shadow" readonly="">૧. ધૂન, પ્રાર્થના અને કીર્તન
+૨. કથા અને વાર્તા
+૩. રમતો અને પ્રવૃત્તિ</textarea>
+</div>
+<div class="motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 450ms; animation-fill-mode: forwards;">
+<label class="block font-header-section text-header-section uppercase tracking-widest text-on-surface-variant mb-2 pb-1 border-b border-[#B9B2A4]">નોંધ</label>
+<textarea class="w-full bg-surface border border-hairline rounded-lg p-3 font-body-gu-md text-body-gu-md h-[60px] focus:ring-0 focus:border-outline resize-none transition-shadow" placeholder="અહીં નોંધ લખો..."></textarea>
+</div>
+<div class="space-y-4 pt-4 motion-safe:animate-fade-in-up opacity-0" style="animation-delay: 500ms; animation-fill-mode: forwards;">
+<button class="w-full h-12 bg-primary-container text-white rounded-lg font-body-gu-lg text-body-gu-lg flex items-center justify-center active:scale-95 transition-transform">
+                કાર્યક્રમ સાચવો
+            </button>
+<button class="w-full h-12 bg-transparent border border-[#B45309] text-[#B45309] rounded-lg font-body-gu-lg text-body-gu-lg flex items-center justify-center active:scale-95 transition-transform">
+                આ અઠવાડિયે સભા નથી
+            </button>
+</div>
+</section>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter bg-surface border-t border-hairline h-row-height-standard md:hidden">
+<button class="flex flex-col items-center justify-center text-outline w-16 hover:bg-surface-container-low active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-secondary text-label-secondary mt-1">મુખ્ય</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline w-16 hover:bg-surface-container-low active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-secondary text-label-secondary mt-1">કામ</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline w-16 hover:bg-surface-container-low active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-secondary text-label-secondary mt-1">બાળકો</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim w-16 hover:bg-surface-container-low active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_note</span>
+<span class="font-label-secondary text-label-secondary mt-1">સભા</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline w-16 hover:bg-surface-container-low active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-secondary text-label-secondary mt-1">વધુ</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="gu"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>પ્રદર્શન ડેશબોર્ડ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;family=Hind+Vadodara:wght@400;500;600;700&amp;family=IBM+Plex+Sans:wght@700&amp;family=Shrikhand&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "primary-fixed-dim": "#ffb3b2",
+                      "surface-container": "#ededf4",
+                      "tertiary-fixed": "#ffdbca",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#ffbcbb",
+                      "tertiary-fixed-dim": "#ffb68e",
+                      "primary": "#85001b",
+                      "tertiary": "#6b2d00",
+                      "on-background": "#1a1b21",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#903f00",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#e8e7ef",
+                      "inverse-surface": "#2e3036",
+                      "on-primary-fixed-variant": "#910720",
+                      "secondary-container": "#8fa7fe",
+                      "secondary": "#4059aa",
+                      "background": "#f9f9ff",
+                      "secondary-fixed-dim": "#b6c4ff",
+                      "on-tertiary-container": "#ffbf9d",
+                      "surface-container-highest": "#e2e2e9",
+                      "inverse-on-surface": "#f0f0f7",
+                      "surface-dim": "#d9d9e0",
+                      "surface-tint": "#b32735",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#331200",
+                      "inverse-primary": "#ffb3b2",
+                      "primary-fixed": "#ffdad9",
+                      "outline-variant": "#e1bebd",
+                      "secondary-fixed": "#dce1ff",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "on-primary-fixed": "#410008",
+                      "surface-variant": "#e2e2e9",
+                      "primary-container": "#a81e2e",
+                      "surface-container-low": "#f3f3fa",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#1d3989",
+                      "on-secondary-fixed": "#00164e",
+                      "on-surface-variant": "#594140",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#f9f9ff",
+                      "on-secondary-fixed-variant": "#264191",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#1a1b21",
+                      "outline": "#8d706f",
+                      "surface": "#f9f9ff",
+                      "ledger-bg": "#FDFCF9",
+                      "ledger-border": "#DDD8CE",
+                      "ledger-text": "#16181D"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem",
+                      "ledger": "6px"
+              },
+              "spacing": {
+                      "margin-edge": "16px",
+                      "row-height-compact": "48px",
+                      "hairline": "1px",
+                      "row-height-standard": "56px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "header-section": [
+                              "IBM Plex Sans"
+                      ],
+                      "data-num-lg": [
+                              "IBM Plex Mono"
+                      ],
+                      "label-secondary": [
+                              "Hind Vadodara"
+                      ],
+                      "body-gu-lg": [
+                              "Hind Vadodara"
+                      ],
+                      "body-gu-md": [
+                              "Hind Vadodara"
+                      ],
+                      "wordmark": [
+                              "Shrikhand"
+                      ],
+                      "data-num-sm": [
+                              "IBM Plex Mono"
+                      ]
+              },
+              "fontSize": {
+                      "header-section": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "data-num-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-secondary": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-gu-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-gu-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "wordmark": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-num-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              },
+              keyframes: {
+                'fade-in-up': {
+                  '0%': { opacity: '0', transform: 'translateY(10px)' },
+                  '100%': { opacity: '1', transform: 'translateY(0)' },
+                },
+                'slide-in-right': {
+                  '0%': { opacity: '0', transform: 'translateX(20px)' },
+                  '100%': { opacity: '1', transform: 'translateX(0)' },
+                },
+                'pop': {
+                  '0%': { transform: 'scale(0.8)', opacity: '0' },
+                  '50%': { transform: 'scale(1.1)' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                }
+              },
+              animation: {
+                'fade-in-up': 'fade-in-up 0.4s ease-out forwards',
+                'slide-in-right': 'slide-in-right 0.3s ease-out forwards',
+                'pop': 'pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .animate-fade-in-up,
+          .animate-slide-in-right,
+          .animate-pop {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+          .transition-transform {
+            transition: none !important;
+          }
+        }
+        
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        
+        /* Ensure initial state for animations */
+        .animate-fade-in-up { opacity: 0; }
+        .animate-slide-in-right { opacity: 0; }
+        .animate-pop { opacity: 0; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-ledger-bg text-ledger-text font-body-gu-md min-h-screen flex flex-col pb-row-height-standard">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface flex items-center justify-between px-margin-edge h-row-height-standard w-full full-width top-0 border-b border-ledger-border flat no shadows z-40 fixed">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-low active:scale-95 transition-transform duration-150 rounded-full p-2 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-header-section text-header-section text-primary dark:text-primary-fixed-dim font-bold tracking-widest uppercase">પ્રદર્શન ડેશબોર્ડ</h1>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[56px] px-margin-edge flex flex-col gap-6 py-6 animate-slide-in-right">
+<!-- Summary Section -->
+<section class="flex gap-4 w-full">
+<div class="flex-1 bg-[#16181D] text-white rounded-ledger p-4 flex flex-col justify-between min-h-[100px] animate-fade-in-up">
+<span class="font-body-gu-md text-sm opacity-80">કુલ જોડાણ</span>
+<span class="font-data-num-lg text-3xl font-semibold">82%</span>
+</div>
+<div class="flex-1 bg-surface-container rounded-ledger border border-ledger-border p-4 flex flex-col justify-between min-h-[100px] animate-fade-in-up delay-100">
+<span class="font-body-gu-md text-sm text-on-surface-variant">માસિક વૃદ્ધિ</span>
+<span class="font-data-num-lg text-primary-container text-3xl font-semibold">+5%</span>
+</div>
+</section>
+<!-- Weekly Attendance Trends -->
+<section class="flex flex-col gap-2">
+<h2 class="font-header-section text-header-section text-on-surface-variant uppercase mb-2 animate-fade-in-up delay-100">સાપ્તાહિક હાજરી ટ્રેન્ડ</h2>
+<div class="border-b border-ledger-border border-t py-2 flex flex-col gap-4">
+<div class="flex flex-col gap-1 animate-fade-in-up delay-200">
+<div class="flex justify-between items-center w-full">
+<span class="font-body-gu-md text-sm">સપ્તાહ ૧</span>
+<span class="font-data-num-sm text-xs">75%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1 animate-fade-in-up delay-300">
+<div class="flex justify-between items-center w-full">
+<span class="font-body-gu-md text-sm">સપ્તાહ ૨</span>
+<span class="font-data-num-sm text-xs">80%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 80%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1 animate-fade-in-up delay-400">
+<div class="flex justify-between items-center w-full">
+<span class="font-body-gu-md text-sm">સપ્તાહ ૩</span>
+<span class="font-data-num-sm text-xs">85%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1 animate-fade-in-up delay-[500ms]">
+<div class="flex justify-between items-center w-full">
+<span class="font-body-gu-md text-sm">સપ્તાહ ૪</span>
+<span class="font-data-num-sm text-xs">82%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full" style="width: 82%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Areas -->
+<section class="flex flex-col gap-2 mt-2">
+<h2 class="font-header-section text-header-section text-on-surface-variant uppercase mb-2 animate-fade-in-up delay-[500ms]">શ્રેષ્ઠ વિસ્તારો</h2>
+<ul class="flex flex-col w-full border-t border-ledger-border">
+<li class="flex items-center justify-between border-b border-ledger-border h-row-height-standard w-full animate-fade-in-up delay-[600ms] hover:bg-surface-container-low active:scale-[0.98] transition-all cursor-pointer px-2 -mx-2 rounded">
+<div class="flex items-center gap-4">
+<span class="font-data-num-sm text-on-surface-variant w-4">1.</span>
+<span class="font-body-gu-lg">Paldi</span>
+</div>
+<span class="font-data-num-lg">94/100</span>
+</li>
+<li class="flex items-center justify-between border-b border-ledger-border h-row-height-standard w-full animate-fade-in-up delay-[700ms] hover:bg-surface-container-low active:scale-[0.98] transition-all cursor-pointer px-2 -mx-2 rounded">
+<div class="flex items-center gap-4">
+<span class="font-data-num-sm text-on-surface-variant w-4">2.</span>
+<span class="font-body-gu-lg">Vasna</span>
+</div>
+<span class="font-data-num-lg">89/100</span>
+</li>
+<li class="flex items-center justify-between border-b border-ledger-border h-row-height-standard w-full animate-fade-in-up delay-[800ms] hover:bg-surface-container-low active:scale-[0.98] transition-all cursor-pointer px-2 -mx-2 rounded">
+<div class="flex items-center gap-4">
+<span class="font-data-num-sm text-on-surface-variant w-4">3.</span>
+<span class="font-body-gu-lg">Maninagar</span>
+</div>
+<span class="font-data-num-lg">85/100</span>
+</li>
+</ul>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter bg-surface border-t border-outline-variant flat no shadows h-row-height-standard">
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-secondary text-label-secondary mt-1">મુખ્ય</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-secondary text-label-secondary mt-1">કામ</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-secondary text-label-secondary mt-1">બાળકો</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-label-secondary text-label-secondary mt-1">સભા</span>
+</button>
+<!-- Active Tab: 'વધુ' (More) maps semantically to Settings/Dashboard contexts if needed, or if specified -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low active:scale-95 transition-transform w-16 h-full">
+<span class="material-symbols-outlined filled" data-icon="menu" data-weight="fill">menu</span>
+<span class="font-label-secondary text-label-secondary mt-1">વધુ</span>
+</button>
+</nav>
+</body></html>

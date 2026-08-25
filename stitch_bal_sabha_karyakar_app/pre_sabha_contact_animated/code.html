@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html lang="gu"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>સભા પૂર્વે સંપર્ક</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Shrikhand&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#264191",
+                        "surface-container-low": "#f3f3fa",
+                        "on-error-container": "#93000a",
+                        "secondary": "#4059aa",
+                        "tertiary-fixed": "#ffdbca",
+                        "on-primary-fixed-variant": "#910720",
+                        "inverse-on-surface": "#f0f0f7",
+                        "inverse-surface": "#2e3036",
+                        "surface-tint": "#b32735",
+                        "background": "#FDFCF9",
+                        "primary-fixed-dim": "#ffb3b2",
+                        "primary-container": "#a81e2e",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "surface-container-highest": "#e2e2e9",
+                        "outline-variant": "#DDD8CE",
+                        "on-surface-variant": "#5A6069",
+                        "tertiary-container": "#903f00",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "surface-dim": "#d9d9e0",
+                        "surface-container-high": "#e8e7ef",
+                        "surface-container": "#ededf4",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "primary": "#A81E2E",
+                        "inverse-primary": "#ffb3b2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#410008",
+                        "tertiary-fixed-dim": "#ffb68e",
+                        "on-tertiary-container": "#ffbf9d",
+                        "secondary-fixed": "#dce1ff",
+                        "on-secondary-container": "#1d3989",
+                        "on-tertiary-fixed": "#331200",
+                        "error-container": "#ffdad6",
+                        "outline": "#949AA3",
+                        "tertiary": "#6b2d00",
+                        "surface-variant": "#e2e2e9",
+                        "on-secondary": "#ffffff",
+                        "surface": "#FFFFFF",
+                        "on-primary-container": "#ffbcbb",
+                        "primary-fixed": "#ffdad9",
+                        "on-secondary-fixed": "#00164e",
+                        "on-primary": "#ffffff",
+                        "on-background": "#16181D",
+                        "on-surface": "#16181D",
+                        "secondary-container": "#8fa7fe",
+                        "link": "#1E3A8A",
+                        "overdue": "#B45309"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "6px",
+                        "xl": "6px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "hairline": "1px",
+                        "gutter": "12px",
+                        "row-height-standard": "56px",
+                        "row-height-compact": "48px",
+                        "margin-edge": "16px"
+                    },
+                    "fontFamily": {
+                        "data-num-lg": ["IBM Plex Mono"],
+                        "header-section": ["Hind Vadodara"],
+                        "body-gu-md": ["Hind Vadodara"],
+                        "data-num-sm": ["IBM Plex Mono"],
+                        "body-gu-lg": ["Hind Vadodara"],
+                        "wordmark": ["Shrikhand"],
+                        "label-secondary": ["Hind Vadodara"]
+                    },
+                    "fontSize": {
+                        "data-num-lg": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "header-section": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-gu-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "data-num-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-gu-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "wordmark": ["24px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "label-secondary": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.4s ease-out forwards',
+                        'pop': 'pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards'
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        pop: {
+                            '0%': { transform: 'scale(0.8)' },
+                            '50%': { transform: 'scale(1.1)' },
+                            '100%': { transform: 'scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Hind Vadodara', sans-serif; background-color: #FDFCF9; color: #16181D; }
+        .num-font { font-family: 'IBM Plex Mono', monospace; }
+        .circle-done { width: 16px; height: 16px; border-radius: 50%; background-color: #A81E2E; border: 1.5px solid #A81E2E; }
+        .circle-not-done { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #94A3B8; background-color: transparent; }
+        .circle-pending { width: 16px; height: 16px; border-radius: 50%; border: 1.5px dashed #94A3B8; background-color: transparent; }
+        
+        /* Layout overrides for strict requirements */
+        .fixed-bottom-stack { position: fixed; bottom: 0; left: 0; right: 0; z-index: 40; }
+        .pb-spacer { padding-bottom: 120px; } /* Space for action bar + nav bar */
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Stagger delays */
+        .stagger-1 { animation-delay: 100ms; }
+        .stagger-2 { animation-delay: 150ms; }
+        .stagger-3 { animation-delay: 200ms; }
+        .stagger-4 { animation-delay: 250ms; }
+        .stagger-5 { animation-delay: 300ms; }
+        
+        .opacity-0-init { opacity: 0; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen">
+<div class="animate-slide-in-right">
+<!-- Header -->
+<header class="bg-surface flex items-center px-margin-edge h-row-height-standard w-full border-b border-outline-variant sticky top-0 z-10">
+<button class="mr-4 text-on-surface active:scale-95 transition-transform"><span class="material-symbols-outlined">arrow_back</span></button>
+<h1 class="font-header-section text-header-section text-on-surface">સભા પૂર્વે સંપર્ક</h1>
+</header>
+<main class="pb-spacer">
+<!-- Instruction Block -->
+<div class="bg-surface px-margin-edge py-3 border-b border-outline-variant animate-fade-in-up opacity-0-init">
+<p class="text-[14px] leading-[1.6] text-on-surface-variant font-body-gu-md">
+                સભા પહેલાં દરેક બાળકના ઘરે ફોન કરીને પૂછો<br/>
+                કે બાળક સભામાં આવશે કે નહીં.
+            </p>
+</div>
+<!-- Progress -->
+<div class="w-full h-1 bg-outline-variant relative">
+<div class="absolute top-0 left-0 h-full bg-primary" style="width: 60%; transition: width 1s ease-in-out;"></div>
+</div>
+<div class="px-margin-edge py-2 text-right animate-fade-in-up opacity-0-init stagger-1">
+<span class="num-font text-[13px] text-overdue">૪ બાળકનો સંપર્ક બાકી</span>
+</div>
+<!-- Roster List -->
+<div class="flex flex-col">
+<!-- Row 1: આવશે selected -->
+<div class="flex items-start px-margin-edge py-3 border-b border-outline-variant bg-surface min-h-[76px] animate-fade-in-up opacity-0-init stagger-1 active:bg-surface-container-low transition-colors">
+<img alt="Student photo" class="w-8 h-8 rounded object-cover mt-1 mr-3 shrink-0" data-alt="A small, professional portrait photograph of a young Gujarati boy looking directly at the camera. Soft, even lighting, plain light gray background, neutral expression, high clarity, conveying a school ID or formal register aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1SgmLpWxIxz7u8yoWEYCWFkagz_mBgzXS4WHniYA9l-bLWMcpz3ww5Q62tAQaUKMMn4CyBqHmU8kVe6E_P-XC9t5Tk8lekoZ3MWo1Hc7OeV5NKzinVpQyJlRu7uC4VjYNQ992FbRN5nVX92RCAmALJ0kj4NIoxkVWPb_H2u-B06ZlkdaFN2iCZVJnYULt2vfPw_W5152UmdaNM0ytyDkX_iUpiEcWhENuq-HAShot4NOGf3GBBWH9QQ"/>
+<div class="flex-grow flex flex-col justify-center">
+<span class="font-body-gu-md text-[15px] font-medium text-on-surface mb-2">આર્યન પટેલ</span>
+<div class="flex gap-2">
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> માતા
+                        </button>
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> પિતા
+                        </button>
+</div>
+</div>
+<div class="flex flex-col gap-[6px] shrink-0 ml-2 self-stretch justify-center">
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-done animate-pop group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] font-semibold text-on-surface leading-none w-20">આવશે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-not-done group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">નહીં આવે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-pending group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">જવાબ નથી મળ્યો</span>
+</div>
+</div>
+</div>
+<!-- Row 2: નહીં આવે selected -->
+<div class="flex items-start px-margin-edge py-3 border-b border-outline-variant bg-surface min-h-[76px] animate-fade-in-up opacity-0-init stagger-2 active:bg-surface-container-low transition-colors">
+<img alt="Student photo" class="w-8 h-8 rounded object-cover mt-1 mr-3 shrink-0" data-alt="A small, professional portrait photograph of a young Gujarati boy wearing glasses, looking slightly off-camera. Soft, even studio lighting, plain light gray background, neutral formal expression, resembling an official record document." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ9MO0aNiTxzWlyFFCiq7qdM2wUQJ6X0COhgAeW2ppGnteMmf5ZI7oQZ3GqydrwLMRKbDIpv1FHO227M3oS6nrp-MjPHZiAD4qZb880x1lYRqUi84-oWYocUCMDtZ1so8QkSouWOfTcvv41xi8DbHHjhxVAGRxbUMPCKoQWq2_6PUnQVlWZfQ8UhgpApmxP0X3aXBCn-JlYkz0mcvbnCjlA0vO5oRpT_M6JtC_aTxyIiJF_VzPlXshTA"/>
+<div class="flex-grow flex flex-col justify-center">
+<span class="font-body-gu-md text-[15px] font-medium text-on-surface mb-2">દેવ શાહ</span>
+<div class="flex gap-2">
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> માતા
+                        </button>
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> પિતા
+                        </button>
+</div>
+</div>
+<div class="flex flex-col gap-[6px] shrink-0 ml-2 self-stretch justify-center">
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-not-done group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">આવશે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-done animate-pop group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] font-semibold text-on-surface leading-none w-20">નહીં આવે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-pending group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">જવાબ નથી મળ્યો</span>
+</div>
+</div>
+</div>
+<!-- Row 3: Untouched -->
+<div class="flex items-start px-margin-edge py-3 border-b border-outline-variant bg-surface min-h-[76px] animate-fade-in-up opacity-0-init stagger-3 active:bg-surface-container-low transition-colors">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center mt-1 mr-3 shrink-0 text-on-surface-variant font-medium">મીત</div>
+<div class="flex-grow flex flex-col justify-center">
+<span class="font-body-gu-md text-[15px] font-medium text-on-surface mb-2">મીત જોશી</span>
+<div class="flex gap-2">
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> માતા
+                        </button>
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> પિતા
+                        </button>
+</div>
+</div>
+<div class="flex flex-col gap-[6px] shrink-0 ml-2 self-stretch justify-center">
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-pending group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">આવશે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-pending group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">નહીં આવે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-pending group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">જવાબ નથી મળ્યો</span>
+</div>
+</div>
+</div>
+<!-- Row 4: Untouched -->
+<div class="flex items-start px-margin-edge py-3 border-b border-outline-variant bg-surface min-h-[76px] animate-fade-in-up opacity-0-init stagger-4 active:bg-surface-container-low transition-colors">
+<img alt="Student photo" class="w-8 h-8 rounded object-cover mt-1 mr-3 shrink-0" data-alt="A small, professional portrait photograph of a young Gujarati boy. Soft studio lighting, plain light gray background, neutral formal expression, official ledger register headshot style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmSAZYp1mJducQv7V-S09XhDxu7_1ke2gzVJPC5eFGGv5zmzhAF9Mw-AqzIYScfV-DPwonRHW2AQRJaRp81xtq0icy4PepwJ_lWIGL7pBRkm6AOvSArJ_ZwiGqnpTztIkC_yZVq77S832RS9-JWs6bhqVPNxBzFu_haHQKx31fk75SOFKPMerUrgnhW4BRBBxdbeag4P6ZRWz9GuuxW5H6hvucFVehqTKjWSlbx9YK6-aZDg6Bd5HJzg"/>
+<div class="flex-grow flex flex-col justify-center">
+<span class="font-body-gu-md text-[15px] font-medium text-on-surface mb-2">કૃશ ત્રિવેદી</span>
+<div class="flex gap-2">
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> માતા
+                        </button>
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> પિતા
+                        </button>
+</div>
+</div>
+<div class="flex flex-col gap-[6px] shrink-0 ml-2 self-stretch justify-center">
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-pending group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">આવશે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-pending group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">નહીં આવે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-pending group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">જવાબ નથી મળ્યો</span>
+</div>
+</div>
+</div>
+<!-- Row 5: આવશે selected -->
+<div class="flex items-start px-margin-edge py-3 border-b border-outline-variant bg-surface min-h-[76px] animate-fade-in-up opacity-0-init stagger-5 active:bg-surface-container-low transition-colors">
+<img alt="Student photo" class="w-8 h-8 rounded object-cover mt-1 mr-3 shrink-0" data-alt="A small, professional portrait photograph of a young Gujarati boy smiling faintly. Soft studio lighting, plain light gray background, clean and professional register photo aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyRFprGXZwHYkWifXkrbarRQAXgDedK9oAotjhganRg5rXhGoauXlCM1JTvZF6xHhNHwmVo656Fv6D9LnOP_rGwDhiXDGsVZjwlXb69o8XO6Z_EvqmPfvckys2HUtHq29b88OwyU_7bNBbrT5tSui7MXz0ox3s6CasSmRunz178iYpQwviYBubJn-BGcM9kPUduTqJR1pqYG9y5g1qvN6If27Sn6lHpMixKYVy-2sraQWqs08Ag9m9xg"/>
+<div class="flex-grow flex flex-col justify-center">
+<span class="font-body-gu-md text-[15px] font-medium text-on-surface mb-2">પાર્થ દેસાઈ</span>
+<div class="flex gap-2">
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> માતા
+                        </button>
+<button class="flex items-center justify-center gap-1 h-10 px-3 rounded-lg border border-outline-variant text-[14px] text-on-surface font-body-gu-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[16px]">call</span> પિતા
+                        </button>
+</div>
+</div>
+<div class="flex flex-col gap-[6px] shrink-0 ml-2 self-stretch justify-center">
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-done animate-pop group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] font-semibold text-on-surface leading-none w-20">આવશે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-not-done group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">નહીં આવે</span>
+</div>
+<div class="flex items-center gap-2 cursor-pointer group">
+<div class="circle-pending group-active:scale-95 transition-transform"></div>
+<span class="text-[12px] text-outline leading-none w-20">જવાબ નથી મળ્યો</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Stack (Action Bar + Nav) -->
+<div class="fixed-bottom-stack">
+<!-- Action Bar -->
+<button class="w-full h-row-height-standard bg-primary text-white font-body-gu-lg opacity-60 flex items-center justify-center border-t border-outline-variant disabled cursor-not-allowed">
+            સંપર્ક પૂરો થયો
+        </button>
+<!-- Bottom NavBar -->
+<nav class="w-full h-row-height-standard bg-surface border-t border-outline-variant flex justify-around items-center px-gutter z-50">
+<div class="flex flex-col items-center justify-center text-outline cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-label-secondary text-label-secondary">મુખ્ય</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label-secondary text-label-secondary">કામ</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">groups</span>
+<span class="font-label-secondary text-label-secondary">બાળકો</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">event_note</span>
+<span class="font-label-secondary text-label-secondary">સભા</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+<span class="font-label-secondary text-label-secondary">વધુ</span>
+</div>
+</nav>
+</div>
+</div>
+</body></html>
