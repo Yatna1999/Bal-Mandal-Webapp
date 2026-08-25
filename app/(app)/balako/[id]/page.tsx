@@ -74,7 +74,7 @@ export default async function BalakProfilePage({
   // Fetch special niyams for this balak
   const { data: niyamData } = await supabase
     .from('niyams')
-    .select('id, title_gu, start_date, end_date, status')
+    .select('id, title_gu, start_date, end_date, status, notes_gu')
     .eq('balak_id', id)
     .order('start_date', { ascending: false });
 
@@ -84,6 +84,7 @@ export default async function BalakProfilePage({
     start_date: n.start_date,
     end_date: n.end_date || n.start_date,
     status: n.status as BalakNiyamItem['status'],
+    notes_gu: n.notes_gu,
   }));
 
   return (

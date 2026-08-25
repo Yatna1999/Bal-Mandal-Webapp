@@ -49,6 +49,7 @@ export interface BalakNiyamItem {
   start_date: string;
   end_date: string;
   status: 'active' | 'expired' | 'completed' | 'lapsed';
+  notes_gu?: string | null;
 }
 
 export function BalakProfileClient({
@@ -418,29 +419,110 @@ export function BalakProfileClient({
 
             {/* વિશેષ નિયમ Section */}
             <div className="space-y-3">
-              <SectionHeader>{t('niyam.title')}</SectionHeader>
+              <div className="flex items-center justify-between">
+                <SectionHeader>{t('niyam.title')}</SectionHeader>
+                <Link
+                  href={`/balako/${balak.id}/niyam/new`}
+                  className="text-[13px] font-semibold text-indigo hover:underline"
+                >
+                  + {t('niyam.add')}
+                </Link>
+              </div>
 
               {niyams.length > 0 ? (
-                <div className="border border-rule rounded-md overflow-hidden bg-sheet">
-                  {niyams.map((niyam) => (
-                    <div
-                      key={niyam.id}
-                      className="min-h-[52px] px-4 py-2.5 border-b border-rule flex items-center justify-between"
-                    >
-                      <div className="space-y-0.5 min-w-0 flex-1">
-                        <p className="text-[15px] font-medium text-ink truncate">
-                          {niyam.title}
-                        </p>
-                        <p className="text-[12px] font-data text-ink-soft">
-                          {formatDateGu(niyam.start_date)} થી {formatDateGu(niyam.end_date)}
-                        </p>
+                <div className="border border-rule rounded-md overflow-hidden bg-sheet divide-y divide-rule">
+                  {niyams.map((niyam) => {
+                    const statusKey = `niyam.status${
+                      niyam.status.charAt(0).toUpperCase() + niyam.status.slice(1)
+                    }` as Parameters<typeof t>[0];
+
+                    const isExpired = niyam.status === 'expired';
+
+                    const handleStatusUpdate = async (newStatus: 'completed' | 'lapsed') => {
+                      try {
+                        const res = await fetch(`/api/balako/${balak.id}/niyams`, {
+                          method: 'PATCH',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            niyam_id: niyam.id,
+                            status: newStatus,
+                          }),
+                        });
+                        if (res.ok) {
+                          showToast(t('niyam.saved'));
+                          router.refresh();
+                        }
+                      } catch {
+                        showToast(t('errors.network'));
+                      }
+                    };
+
+                    return (
+                      <div key={niyam.id} className="p-4 space-y-3">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="space-y-0.5 min-w-0 flex-1">
+                            <p className="text-[15px] font-medium text-ink leading-relaxed">
+                              {niyam.title}
+                            </p>
+                            <p className="text-[12px] font-data text-ink-soft">
+                              {formatDateGu(niyam.start_date)} થી {formatDateGu(niyam.end_date)}
+                            </p>
+                            {niyam.notes_gu && (
+                              <p className="text-[13px] text-ink-soft leading-relaxed pt-1">
+                                {niyam.notes_gu}
+                              </p>
+                            )}
+                          </div>
+
+                          {/* Status Pill */}
+                          <div className="shrink-0">
+                            {niyam.status === 'active' && (
+                              <Pill label={t(statusKey)} selected={true} />
+                            )}
+                            {niyam.status === 'expired' && (
+                              <span className="inline-flex items-center px-2.5 py-1 text-[12px] font-semibold rounded-full bg-amber-wash text-amber border border-amber">
+                                {t(statusKey)}
+                              </span>
+                            )}
+                            {niyam.status === 'completed' && (
+                              <Pill label={t(statusKey)} selected={false} />
+                            )}
+                            {niyam.status === 'lapsed' && (
+                              <span className="inline-flex items-center px-2.5 py-1 text-[12px] font-medium rounded-full bg-paper text-ink-faint border border-rule">
+                                {t(statusKey)}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Actions for Expired Niyam */}
+                        {isExpired && (
+                          <div className="pt-2 border-t border-rule flex flex-wrap items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => handleStatusUpdate('completed')}
+                              className="h-[36px] px-3 bg-indigo text-white text-[13px] font-semibold rounded-md hover:opacity-95"
+                            >
+                              {t('niyam.markCompleted')}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleStatusUpdate('lapsed')}
+                              className="h-[36px] px-3 bg-paper text-ink-soft border border-rule text-[13px] font-medium rounded-md hover:bg-sheet"
+                            >
+                              {t('niyam.markLapsed')}
+                            </button>
+                            <Link
+                              href={`/balako/${balak.id}/niyam/new`}
+                              className="text-[13px] font-semibold text-indigo hover:underline ml-auto"
+                            >
+                              + {t('niyam.add')}
+                            </Link>
+                          </div>
+                        )}
                       </div>
-                      <Pill
-                        label={t(`niyam.status${niyam.status.charAt(0).toUpperCase() + niyam.status.slice(1)}` as Parameters<typeof t>[0])}
-                        selected={niyam.status === 'active'}
-                      />
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               ) : (
                 /* Empty Niyam State */
@@ -449,7 +531,6 @@ export function BalakProfileClient({
                     {t('empty.niyam')}
                   </p>
                   <div>
-                    {/* TODO: WO-27 - Add Special Niyam Flow */}
                     <Link
                       href={`/balako/${balak.id}/niyam/new`}
                       className="inline-flex items-center justify-center h-[40px] px-4 border border-indigo text-indigo text-[14px] font-semibold rounded-md transition-colors hover:bg-indigo-wash"
